@@ -8,7 +8,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
          
-         
+         <div class="my-2 text-blue-600">
+            <a href="{{route('admin.categories.index')}}">
+            <i class="fa-solid fa-arrow-left-long"></i> <span class="pl-2 text-lg font-bold">Home</span>
+            </a>
+        </div>
 <form action="{{route('admin.categories.update', $category->id)}}" method="POST" enctype="multipart/form-data">
  @csrf
  @method('PUT')

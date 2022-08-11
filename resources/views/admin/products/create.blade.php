@@ -7,7 +7,11 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-         
+         <div class="my-2 text-blue-600">
+            <a href="{{route('admin.products.index')}}">
+            <i class="fa-solid fa-arrow-left-long"></i> <span class="pl-2 text-lg font-bold">Home</span>
+            </a>
+        </div>
 <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
  @csrf
  <div class="mb-6">

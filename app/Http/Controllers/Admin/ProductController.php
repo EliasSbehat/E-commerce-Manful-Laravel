@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -75,7 +76,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit' , compact('product'));
+        $categories = Category::all();
+        return view('admin.products.edit' , compact('product' , 'categories'));
     }
 
     /**
@@ -85,9 +87,26 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+        ]);
+
+        $image = $product->image;
+        if($request->hasFile('image')){
+            Storage::delete($product->image);
+            $image = $request->file('image')->store('public/products');
+        }
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'category_id' => $request->category_id,
+            'image' => $image,
+        ]);
+
+        return to_route('admin.products.index')->with('message', 'Updated Successfully');
     }
 
     /**
@@ -96,8 +115,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+
+        Storage::delete($product->image);
+        $product->delete();
+
+        return to_route('admin.products.index')->with('message', 'Deleted Successfully');
     }
 }
