@@ -15,8 +15,8 @@
     </head>
     <body class="font-sans antialiased">
         
- <div class="flex-col w-full md:flex md:flex-row md:min-h-screen ">
-        <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full md:w-64  text-gray-200 bg-gray-800" x-data="{ open: false }">
+ <div class="flex-col w-full md:flex md:flex-row md:min-h-screen overflow-x-hidden">
+        <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full md:w-64  text-gray-200 bg-gray-800 md:fixed md:h-full " x-data="{ open: false }">
             <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4">
                 <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">ManFul UI</a>
                 <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
@@ -33,10 +33,7 @@
                      <x-admin-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
                         {{ __('Products') }}
                     </x-admin-nav-link>
-
-                     {{-- <x-admin-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.index')">
-                        {{ __('Orders') }}
-                    </x-admin-nav-link> --}}
+                    
                    <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -49,7 +46,7 @@
                 
                 </nav>
         </div>
-        <main class="p-8 m-2 w-full">
+        <main class="p-8 m-2 w-full md:ml-72">
             {{$slot}}
         </main>
     </div>
