@@ -6,7 +6,11 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
  <meta http-equiv="X-UA-Compatible" content="ie=edge">
  <title>@yield('title')</title>
-
+    {{-- Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
  {{-- Font awesome cdn --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Scripts -->
@@ -15,7 +19,7 @@
 <body class="h-screen">
 
   <!-- Navbar start-->
-    <div class="nav bg-white">
+    <div class="nav bg-white font-dancing">
       <nav class="flex justify-between items-center h-20">
         <!-- Logo -->
         <div class="flex items-center ml-8 text-3xl font-bold">
@@ -36,9 +40,9 @@
         </div>
         <!-- Nav Items -->
         {{-- Search ,dropdown and cart --}}
-        <ul class="flex items-center space-x-10 mr-6">
+        <ul class="flex items-center md:space-x-10 mr-6">
           <!-- Mobile Hamburger menu -->
-          <li class="md:hidden" id="btnMobile">
+          <li class="md:hidden mr-5" id="btnMobile">
             <a href="#" class="text-2xl"><i class="fa-solid fa-bars"></i></a>
           </li>
 
@@ -57,7 +61,7 @@
                         <button class="flex items-center justify-center text-lg font-medium drop-shadow-lg w-24  focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                          
                             <div class="flex">
-                              <svg aria-hidden="true" class=" flex-shrink-0 w-6 h-6 text-amber-500 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                              <svg aria-hidden="true" class=" flex-shrink-0 w-6 h-6 text-amber-800 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                              Account</div>
 
                             <div class="ml-1">
@@ -147,6 +151,40 @@
 
  @yield('content')
  {{-- Footer --}}
+  <!-- Footer -->
+    <section class="flex h-80 font-dancing bg-neutral-800 text-white">
+     <div class="h-full w-1/3">
+      <h2 class="text-5xl font-bold ml-12 mt-12">ManFul</h2>
+      <p class="ml-12 pt-2">&copy; Copyright, 2022.</p>
+     </div>
+     <div class="grid grid-cols-3 h-full w-2/3">
+      <div class="flex flex-col items-center mt-12">
+       <h4 class="text-3xl pb-5 opacity-10">Company</h4>
+       <ul class="space-y-4 flex flex-col">
+        <a href="#">Privacy Policy</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+       </ul>
+      </div>
+      <div class="flex flex-col items-center mt-12">
+       <h4 class="text-3xl pb-5 opacity-10">Quick Links</h4>
+       <ul class="space-y-4 flex flex-col">
+        <a href="#">Returns</a>
+        <a href="#">Shipping</a>
+        <a href="#">Orders</a>
+       </ul>
+      </div>
+      <div class="flex flex-col items-center mt-12">
+       <h4 class="text-3xl pb-5 opacity-10">Follow Us</h4>
+       <ul class="space-y-4 flex flex-col">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+       </ul>
+      </div>
+     </div>
+    </section>
+
  <script>
 const btnMobile = document.getElementById('btnMobile');
 const mobileNav = document.getElementById('mobileNav');
