@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,9 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-
+Route::get('/',[HomeController::class , 'featuredSection'])->name('home');
+Route::get('/shop', [HomeController::class , 'listProducts'])->name('shop');
+Route::get('/details/{id}',[HomeController::class,'productDetails'])->name('details');
 
 // Admin Routes
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){

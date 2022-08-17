@@ -9,7 +9,7 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
   <header class="text-white mt-20 space-y-8 font-dancing tracking-tight">
   <h1 class="md:text-5xl text-2xl ">Grooming, but like never before</h1>
   <p class="md:text-2xl pb-8">Build your custom kit from scratch</p>
-  <a href="" class="text-lg px-14 py-2 bg-white text-yellow-800 rounded font-semibold">To Shop</a>
+  <a href="{{route('shop')}}" class="text-lg px-14 py-2 bg-white text-yellow-800 rounded font-semibold">To Shop</a>
   </header>
  </div>
 </section>
@@ -60,7 +60,8 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
           <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">Beard</a>
         </div>
-        <img src="{{asset('img\16349252_rm388-rm362-b23-mockup.jpg')}}" alt="" class="w-full h-full object-cover">
+        {{-- <img src="{{asset('img\16349252_rm388-rm362-b23-mockup.jpg')}}" alt="" class="w-full h-full object-cover"> --}}
+        <img src="https://img.freepik.com/premium-photo/young-handsome-bearded-man-with-beard-stylish-haircut-think_147765-71.jpg?size=626&ext=jpg&uid=R73340908&ga=GA1.2.225954679.1655113232" alt="" class="w-full h-full object-cover">
       </div>
     </div>
     {{-- Right side --}}
@@ -69,7 +70,8 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
           <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">SkinCare</a>
         </div>
-        <img src="{{asset('img\24402388_jar_06.jpg')}}" alt="" class="w-full h-full object-cover">
+        {{-- <img src="{{asset('img\24402388_jar_06.jpg')}}" alt="" class="w-full h-full object-cover"> --}}
+        <img src="https://img.freepik.com/free-photo/portrait-concentrated-young-bearded-man_171337-17199.jpg?size=626&ext=jpg&uid=R73340908&ga=GA1.2.225954679.1655113232" alt="" class="w-full h-full object-cover">
       </div>
     </div>
   </div>
@@ -77,107 +79,41 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 {{-- Categories end --}}
 
 {{-- Products start --}}
-<section class="h-screen mt-28 font-dancing">
+<section class="h-fit mt-28 font-dancing">
 {{-- Section title --}}
   <div class="ml-4 text">
 <h2 class="text-3xl mb-2">Start building your kit</h2>
   <div class=" border-b-4 border-yellow-800 mb- w-1/5 rounded-lg"></div>
 </div>
-
-{{-- Product listing --}}
-<div class="h-full flex items-center ml-4 gap-4">
-<div class="h-4/5 w-1/4 bg-gray-200">
-  {{-- Product image --}}
-<div class="w-full h-5/6">
-<img src="https://img.freepik.com/free-psd/beauty-care-cosmetic-product-mock-up_23-2148891564.jpg?size=338&ext=jpg&uid=R73340908&ga=GA1.2.225954679.1655113232" alt="" class="w-full h-full object-cover">
+<div class="grid grid-cols-3 pt-4 justify-items-center gap-y-10">
+@foreach($products as $product)
+  <div class="w-80 h-96">
+  {{-- Image --}}
+  <div class="h-4/5">
+    <a href="{{route('details' , $product->id)}}">
+      <img src="{{Storage::url($product->image)}}" alt="" class="h-full w-full object-cover">
+    </a>
+  </div>
+  {{-- Details --}}
+  <div class=" justify-between items-center">
+    <div class="flex justify-between pb-3">
+      <p class="text-xl ">{{$product->name}}</p>
+      <p class="font-semibold">{{$product->price}} Kshs</p>
+    </div>
+    <div class="text-center">
+      <a href="" class="bg-yellow-900  px-10 py-1 text-white">Add to Cart</a>
+    </div>
+  </div>
 </div>
-{{-- Product info --}}
-<div class="w-full">
-  {{-- Title and price --}}
-<div class="px-4 pb-2">
-<div class="flex justify-between">
-  <h2 class="text-xl">Product title</h2>
-  <h2>1200 KES</h2>
+@endforeach
 </div>
+<div class="text-center mt-20">
+<a href="" class="px-16 py-2 bg-black text-white">View All</a>
 </div>
-{{-- Button --}}
-<div class="text-center py-2">
-  <a href="" class="px-20 py-1 border  border-black">Shop now</a>
-</div>
-</div>
-</div>
-
-<div class="h-4/5 w-1/4 bg-gray-200">
-{{-- Product image --}}
-<div class="w-full h-5/6">
-<img src="https://img.freepik.com/free-psd/beauty-cosmetic-cream-container-branding-mockup_47987-4849.jpg?size=626&ext=jpg&uid=R73340908&ga=GA1.2.225954679.1655113232" alt="" class="w-full h-full object-cover">
-</div>
-{{-- Product info --}}
-<div class="w-full">
-  {{-- Title and price --}}
-<div class="px-4 pb-2">
-<div class="flex justify-between">
-  <h2 class="text-xl">Product title</h2>
-  <h2>1200 KES</h2>
-</div>
-</div>
-{{-- Button --}}
-<div class="text-center py-2">
-  <a href="" class="px-20 py-1 border  border-black">Shop now</a>
-</div>
-</div>
-</div>
-
-<div class="h-4/5 w-1/4 bg-gray-200">
-{{-- Product image --}}
-<div class="w-full h-5/6">
-<img src="https://img.freepik.com/free-psd/amber-glass-cosmetic-jar-box-mockup_358694-1020.jpg?size=626&ext=jpg&uid=R73340908&ga=GA1.2.225954679.1655113232" alt="" class="w-full h-full object-cover">
-</div>
-{{-- Product info --}}
-<div class="w-full">
-  {{-- Title and price --}}
-<div class="px-4 pb-2">
-<div class="flex justify-between">
-  <h2 class="text-xl">Product title</h2>
-  <h2>1200 KES</h2>
-</div>
-</div>
-{{-- Button --}}
-<div class="text-center py-2">
-  <a href="" class="px-20 py-1 border  border-black">Shop now</a>
-</div>
-</div>
-</div>
-
-<div class="h-4/5 w-1/4 bg-gray-200">
-{{-- Product image --}}
-<div class="w-full h-5/6">
-<img src="https://img.freepik.com/free-psd/beauty-cosmetic-cream-container-branding-mockup_439185-8736.jpg?size=626&ext=jpg&uid=R73340908&ga=GA1.2.225954679.1655113232" alt="" class="w-full h-full object-cover">
-</div>
-{{-- Product info --}}
-<div class="w-full">
-  {{-- Title and price --}}
-<div class="px-4 pb-2">
-<div class="flex justify-between">
-  <h2 class="text-xl">Product title</h2>
-  <h2>1200 KES</h2>
-</div>
-</div>
-{{-- Button --}}
-<div class="text-center py-2">
-  <a href="" class="px-20 py-1 border  border-black">Shop now</a>
-</div>
-</div>
-</div>
-</div>
-{{-- View All btn --}}
-<div class="text-center">
-<a href="" class="px-20 py-2 bg-black text-white text-xl hover:bg-white hover:border hover:border-yellow-800 hover:text-black transition duration-200">View All</a>
-</div>
+{{-- Product end --}}
 </section>
-{{-- Products end --}}
 
-<section class="h-full mt-28 flex items-center ml-4">
+<section class="h-full mt-28 flex justify-center items-center ml-4">
 <div class="h-4/5 w-1/2">
 <img src="{{asset('img\daniel-pascoa-V4_Oy1hm2kc-unsplash.jpg')}}" alt="" class="w-full h-full object-cover">
 </div>
