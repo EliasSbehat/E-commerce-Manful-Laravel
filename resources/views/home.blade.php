@@ -58,20 +58,19 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
     <div class="relative w-1/2 bg-white flex justify-center">
       <div class=" h-full w-full">
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
-          <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">Beard</a>
+          <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">Body</a>
         </div>
-        {{-- <img src="{{asset('img\16349252_rm388-rm362-b23-mockup.jpg')}}" alt="" class="w-full h-full object-cover"> --}}
-        <img src="https://img.freepik.com/premium-photo/young-handsome-bearded-man-with-beard-stylish-haircut-think_147765-71.jpg?size=626&ext=jpg&uid=R73340908&ga=GA1.2.225954679.1655113232" alt="" class="w-full h-full object-cover">
+        <img src="{{Storage::url('categories\aWO4lA3OLUL6qCEkjaylr46AoXO3j7gKCyXC753I.jpg')}}" alt="" class="w-full h-full object-cover">
       </div>
     </div>
     {{-- Right side --}}
     <div class="relative w-1/2 bg-white flex justify-center">
        <div class=" h-full w-full">
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
-          <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">SkinCare</a>
+          <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">Beard</a>
         </div>
         {{-- <img src="{{asset('img\24402388_jar_06.jpg')}}" alt="" class="w-full h-full object-cover"> --}}
-        <img src="https://img.freepik.com/free-photo/portrait-concentrated-young-bearded-man_171337-17199.jpg?size=626&ext=jpg&uid=R73340908&ga=GA1.2.225954679.1655113232" alt="" class="w-full h-full object-cover">
+        <img src="{{Storage::url('categories\YHa3JkJNwETCY8OvuG02FdJ09InAq8RrLcjTciaY.jpg')}}" alt="" class="w-full h-full object-cover">
       </div>
     </div>
   </div>
@@ -81,50 +80,68 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 {{-- Products start --}}
 <section class="h-fit mt-28 font-dancing">
 {{-- Section title --}}
-  <div class="ml-4 text">
+<div class="flex justify-between">
+    <div class="ml-4 text">
 <h2 class="text-3xl mb-2">Start building your kit</h2>
-  <div class=" border-b-4 border-yellow-800 mb- w-1/5 rounded-lg"></div>
+  <div class=" border-b-4 border-yellow-800  w-4/5 rounded-lg"></div>
 </div>
-<div class="grid grid-cols-3 pt-4 justify-items-center gap-y-10">
+
+<div class="mr-6 ">
+<a href="" class="hover:underline transition duration-100 text-yellow-900 font-semibold text-lg">View All <i class="fa-solid fa-angles-right"></i></a>
+</div>
+</div>
+<div class="grid grid-cols-3 pt-4 justify-items-center gap-y-20">
 @foreach($products as $product)
   <div class="w-80 h-96">
   {{-- Image --}}
   <div class="h-4/5">
-    <a href="{{route('details' , $product->id)}}">
+    <a href="{{route('product' ,$product->slug )}}">
       <img src="{{Storage::url($product->image)}}" alt="" class="h-full w-full object-cover">
     </a>
   </div>
   {{-- Details --}}
-  <div class=" justify-between items-center">
-    <div class="flex justify-between pb-3">
+  <div class="space-y-2">
+    <div class="">
       <p class="text-xl ">{{$product->name}}</p>
-      <p class="font-semibold">{{$product->price}} Kshs</p>
     </div>
-    <div class="text-center">
-      <a href="" class="bg-yellow-900  px-10 py-1 text-white">Add to Cart</a>
+    <div class="">
+      <p class="font-semibold">{{(int)$product->price}} Kshs</p>
+    </div>
+    <div>
+      <a href="" class="text-end bg-yellow-900  px-10 py-1 text-white hover:bg-white hover:text-black hover:border-2 hover:border-yellow-900 transition duration-100">Add to Cart</a>
     </div>
   </div>
 </div>
 @endforeach
 </div>
-<div class="text-center mt-20">
-<a href="" class="px-16 py-2 bg-black text-white">View All</a>
-</div>
-{{-- Product end --}}
 </section>
+{{-- Product end --}}
 
-<section class="h-full mt-28 flex justify-center items-center ml-4">
-<div class="h-4/5 w-1/2">
-<img src="{{asset('img\daniel-pascoa-V4_Oy1hm2kc-unsplash.jpg')}}" alt="" class="w-full h-full object-cover">
+{{-- Deal start --}}
+<section class="flex h-screen mt-28">
+<div class="w-1/2">
+<img src="https://m.media-amazon.com/images/I/81WkoAtwsKL._SL1500_.jpg" alt="" class="h-full w-full object-fit">
 </div>
-<div class="w-1/2 h-4/5 bg-black text-white text-center font-dancing">
-<h2 class=" py-12 text-3xl tracking-wider">KEEP ON GROWING</h2>
-<div class="space-y-6">
-  <p>A few years ago your life wasn't like today's. You either had the wildest dreams or you got derailed somewhere along the way</p>
-  <p>None of that really matters. What matters is that you went forward day-in and day-out—a little shaky and uncertain at first, but gradually more and more confidently.</p>
-  <p class="text-yellow-800">How will you show up?</p>
+<div class="flex flex-col items-center justify-center space-y-8 w-1/2 font-dancing pt-8 relative">
+<h2 class="text-xl text-rose-700">Deal of the week</h2>
+<p class="text-5xl">Full Beard Gift Set</p>
+{{-- Timer --}}
+<p id="countdown" class="text-3xl ml-4 text-yellow-900"></p>
+{{-- Badge --}}
+<div class="absolute top-0 left-0 flex flex-col items-center justify-center mt-4 rounded-full w-36 h-36 bg-yellow-900  text-white">
+  <p >Sale of</p>
+  <p class="font-bold text-xl">3999 KES</p>
+</div>
+{{-- Cta --}}
+<div class="pt-4">
+  <a href="" class="px-20 py-4 bg-black uppercase text-white">Shop Now</a>
 </div>
 </div>
+</section>
+{{-- Deal end --}}
+
+<section class="h-full">
+
 </section>
 
 @endsection

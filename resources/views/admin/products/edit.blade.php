@@ -46,7 +46,7 @@
   @endforeach
  </select>
 </div>
- <button type="submit" class="my-8 w-44 h-10 bg-emerald-400 hover:bg-emerald-500 rounded-md text-lg text-white">Create Product</button>
+ <button type="submit" class="my-8 w-44 h-10 bg-emerald-400 hover:bg-emerald-500 rounded-md text-lg text-white">Update Product</button>
 </form>
 
         </div>

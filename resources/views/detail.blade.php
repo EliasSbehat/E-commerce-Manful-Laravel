@@ -15,8 +15,15 @@
   <input type="number" value="1" name="" id="" class="text-xl block">
  </div>
  <a href="" class="px-14 py-2 border border-black block text-center">Add To Wishlist</a>
- <a href="" class="px-14 py-2 text-white bg-black block text-center">Add To Cart</a>
-
+                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" value="{{ $product->id }}" name="id">
+                        <input type="hidden" value="{{ $product->name }}" name="name">
+                        <input type="hidden" value="{{ $product->price }}" name="price">
+                        <input type="hidden" value="{{ $product->image }}"  name="image">
+                        <input type="hidden" value="1" name="quantity">
+                        <button class="w-full py-2 text-white bg-black rounded">Add To Cart</button>
+                    </form>
  </div>
 </section>
 @endsection

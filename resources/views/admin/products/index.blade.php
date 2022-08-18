@@ -24,9 +24,6 @@
                     Product name
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Description
-                </th>
-                <th scope="col" class="py-3 px-6">
                     Image
                 </th>
 
@@ -49,7 +46,7 @@
                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                     {{$product->name}}
                 </th>
-                <td class="py-4 px-6">{{$product->description}}</td>
+
                 <td class="py-4 px-6">
                     <img src="{{Storage::url($product->image)}}" alt="" width="40" height="40">
                 </td>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,11 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/',[HomeController::class , 'featuredSection'])->name('home');
 Route::get('/shop', [HomeController::class , 'listProducts'])->name('shop');
-Route::get('/details/{id}',[HomeController::class,'productDetails'])->name('details');
+Route::get('/product/{slug}',[HomeController::class,'singleProduct'])->name('product');
+
+Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
+Route::post('remove', [CartController::class, 'removeCartItem'])->name('cart.remove');
 
 // Admin Routes
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){

@@ -20,7 +20,7 @@
   <div class="w-80 h-96">
   {{-- Image --}}
   <div class="h-4/5">
-    <a href="{{route('details' , $product->id)}}">
+    <a href="{{route('product' , $product->id)}}">
       <img src="{{Storage::url($product->image)}}" alt="" class="h-full w-full object-cover">
     </a>
   </div>

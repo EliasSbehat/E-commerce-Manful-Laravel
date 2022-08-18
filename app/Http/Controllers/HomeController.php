@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 class HomeController extends Controller
 {
     public function featuredSection()
     {
-        $products = Product::all()->take(3);
-        return view('home', compact('products'));
+        $categories = Category::all()->take(2);
+        $products = Product::all()->take(6);
+        return view('home', compact('products' , 'categories'));
     }
 
     public function listProducts()
@@ -18,8 +20,8 @@ class HomeController extends Controller
         return view('shop' , compact('products'));
     }
 
-    public function productDetails($id){
-        $product  = Product::findOrFail($id);
+    public function singleProduct($slug){
+        $product  = Product::where('slug' , $slug)->firstOrFail();
         return view('detail' ,compact('product') );
     }
 }
