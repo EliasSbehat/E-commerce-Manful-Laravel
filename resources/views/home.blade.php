@@ -140,8 +140,12 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 </section>
 {{-- Deal end --}}
 
-<section class="h-full">
-
+<section class="h-80 bg-black text-white text-center font-dancing pt-12 space-y-8">
+<p class="text-2xl">Dont forget to sign up</p>
+<p class="text-xl">Enjoy discounts, view your order history and do much more!</p>
+<div>
+  <a href="{{route('register')}}" class="px-16 py-3 bg-yellow-900">Sign Up</a>
+</div>
 </section>
 
 @endsection

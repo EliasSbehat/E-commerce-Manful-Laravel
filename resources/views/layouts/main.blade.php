@@ -152,7 +152,7 @@
  @yield('content')
  {{-- Footer --}}
   <!-- Footer -->
-    <section class="flex h-80 font-dancing bg-neutral-800 text-white">
+    <section class="flex h-80 font-dancing border-t-2 border-white text-white bg-black">
      <div class="h-full w-1/3">
       <h2 class="text-5xl font-bold ml-12 mt-12">ManFul</h2>
       <p class="ml-12 pt-2">&copy; Copyright, 2022.</p>
