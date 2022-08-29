@@ -14,7 +14,7 @@
  {{-- Font awesome cdn --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Scripts -->
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @vite(['resources/css/app.css', 'resources/js/app.js' , 'resources/js/custom.js'])
 </head>
 <body class="h-screen">
 
@@ -23,7 +23,7 @@
       <nav class="flex justify-between items-center h-20">
         <!-- Logo -->
         <div class="flex items-center ml-8 text-3xl font-bold">
-         <h2 class="">ManFul</h2>
+         <a href="{{route('home')}}" class="">ManFul</a>
          <ul
            class="pl-10 space-x-12 text-lg font-semibold outline-none items-center hidden md:flex"
          >
@@ -31,7 +31,7 @@
              <a href="#">Home</a>
            </li>
            <li class="">
-             <a href="#">Shop</a>
+             <a href="{{route('shop')}}">Shop</a>
            </li>
            <li class="">
              <a href="#">Contact</a>
@@ -48,7 +48,7 @@
 
           {{-- Search --}}
           <div class="hidden md:block">
-              <form action="">
+              <form action="{{route('shop')}}" method="GET" role="search">
                  <input type="search" name="search" id="" class="h-8 w-52 rounded shadow-md border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200" placeholder="Search...">
                    <button type="submit" class="bg-black text-white px-3 py-1 -ml-1 h-8 shadow-md"><i class="fa fa-search"></i></button>
               </form>
@@ -62,7 +62,13 @@
                          
                             <div class="flex">
                               <svg aria-hidden="true" class=" flex-shrink-0 w-6 h-6 text-amber-800 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-                             Account</div>
+                              @guest
+                            Account
+                       @endguest
+                       @auth
+                        {{auth()->user()->name}}   
+                       @endauth 
+                            </div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -92,7 +98,12 @@
                      <x-dropdown-link>
                       <button class="flex items-end" type="submit">
                        <svg aria-hidden="true" class="mr-1 flex-shrink-0 w-6 h-6 text-amber-500 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                       @guest   
                        My Account
+                       @endguest
+                       @auth
+                        {{auth()->user()->name}}   
+                       @endauth
                       </button>
                      </x-dropdown-link>
                      <x-dropdown-link >
@@ -119,7 +130,7 @@
               ><i class="fa-solid fa-cart-shopping text-2xl"></i>
               <span
                 class="absolute top-4 right-3 w-5 h-5 text-sm bg-green-600 rounded-full text-center text-white animate-pulse"
-                >0</span
+                >{{ Cart::getContent()->count() }}</span
               >
             </a>
           </li>
@@ -184,43 +195,5 @@
       </div>
      </div>
     </section>
-
- <script>
-const btnMobile = document.getElementById('btnMobile');
-const mobileNav = document.getElementById('mobileNav');
-
-btnMobile.addEventListener('click', function(){
-  mobileNav.classList.toggle('translate-x-0')
-})
-
-// Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-
-// Update the count down every 1 second
-let x = setInterval(function() {
-
-  // Get today's date and time
-  let now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  let distance = countDownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="demo"
-  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
- </script>
 </body>
 </html>

@@ -22,9 +22,13 @@ Route::get('/',[HomeController::class , 'featuredSection'])->name('home');
 Route::get('/shop', [HomeController::class , 'listProducts'])->name('shop');
 Route::get('/product/{slug}',[HomeController::class,'singleProduct'])->name('product');
 
+
 Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
+Route::post('update-cart',[CartController::class , 'updateCart'])->name('cart.update');
 Route::post('remove', [CartController::class, 'removeCartItem'])->name('cart.remove');
+Route::post('clear',[CartController::class , 'clearCart'])->name('cart.clear');
+
 
 // Admin Routes
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){

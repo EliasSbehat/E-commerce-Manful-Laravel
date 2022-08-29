@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title' , 'Home')
+@section('title' , 'ManFul - Home')
 @section('content')
 {{-- Hero Start --}}
 <section 
@@ -55,24 +55,26 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
   {{-- Flex container --}}
   <div class="flex gap-5 ml-4 h-full">
     {{-- Left side --}}
+    @foreach ($categories as $category)
+        
     <div class="relative w-1/2 bg-white flex justify-center">
       <div class=" h-full w-full">
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
-          <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">Body</a>
+          <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">{{$category->name}}</a>
         </div>
-        <img src="{{Storage::url('categories\aWO4lA3OLUL6qCEkjaylr46AoXO3j7gKCyXC753I.jpg')}}" alt="" class="w-full h-full object-cover">
+        <img src="{{Storage::url($category->image)}}" alt="" class="w-full h-full object-cover">
       </div>
     </div>
+    @endforeach
     {{-- Right side --}}
-    <div class="relative w-1/2 bg-white flex justify-center">
+    {{-- <div class="relative w-1/2 bg-white flex justify-center">
        <div class=" h-full w-full">
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
           <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">Beard</a>
         </div>
-        {{-- <img src="{{asset('img\24402388_jar_06.jpg')}}" alt="" class="w-full h-full object-cover"> --}}
-        <img src="{{Storage::url('categories\YHa3JkJNwETCY8OvuG02FdJ09InAq8RrLcjTciaY.jpg')}}" alt="" class="w-full h-full object-cover">
+        <img src="{{Storage::url('categories\HsGwyVJ3lCGuRZwHL4QhqUARbWlU1wdDvtQx6UWK.jpg')}}" alt="" class="w-full h-full object-cover">
       </div>
-    </div>
+    </div> --}}
   </div>
 </section>
 {{-- Categories end --}}
@@ -90,13 +92,13 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 <a href="" class="hover:underline transition duration-100 text-yellow-900 font-semibold text-lg">View All <i class="fa-solid fa-angles-right"></i></a>
 </div>
 </div>
-<div class="grid grid-cols-3 pt-4 justify-items-center gap-y-20">
+<div class="products justify-items-center pt-4 ">
 @foreach($products as $product)
   <div class="w-80 h-96">
   {{-- Image --}}
   <div class="h-4/5">
     <a href="{{route('product' ,$product->slug )}}">
-      <img src="{{Storage::url($product->image)}}" alt="" class="h-full w-full object-cover">
+      <img src="{{Storage::url($product->image)}}" alt="{{$product->name}}" class="h-full w-full object-cover">
     </a>
   </div>
   {{-- Details --}}
@@ -108,7 +110,7 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
       <p class="font-semibold">{{(int)$product->price}} Kshs</p>
     </div>
     <div>
-      <a href="" class="text-end bg-yellow-900  px-10 py-1 text-white hover:bg-white hover:text-black hover:border-2 hover:border-yellow-900 transition duration-100">Add to Cart</a>
+      <a href="{{route('product' ,$product->slug)}}" class="text-end bg-yellow-900  px-10 py-1 text-white hover:bg-white hover:text-black hover:border-2 hover:border-yellow-900 transition duration-100">Quick view</a>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@
             <div class="flex justify-between mb-4">
                  <a href="{{route('admin.categories.create')}}" class="p-2 my-2 bg-green-400 hover:bg-green-600 text-white rounded-lg font-bold">Add new category</a>
                  @if(session('message'))
-                <div id="message" class="w-64 h-10 flex items-center bg-green-200 rounded-md p-2 font-medium">
+                <div  class="message w-64 h-10 flex items-center bg-green-200 rounded-md p-2 font-medium">
                         <p>{{session('message')}}</p>                    
                     </div>
                     @endif
