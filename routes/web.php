@@ -23,6 +23,9 @@ Route::get('/shop', [HomeController::class , 'listProducts'])->name('shop');
 Route::get('/product/{slug}',[HomeController::class,'singleProduct'])->name('product');
 
 
+Route::get('/search', [HomeController::class , 'search'])->name('search');
+Route::get('filter', [HomeController::class , 'filter'])->name('filter');
+
 Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
 Route::post('update-cart',[CartController::class , 'updateCart'])->name('cart.update');

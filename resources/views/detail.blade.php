@@ -6,29 +6,51 @@
     <p class="text-green-800 ml-4 font-bold"></p>
 </div>
 
-<section class="h-screen flex ml-4 my-4">
+<section class="h-screen flex justify-center ml-4 my-4">
  <div class="h-full w-1/2 bg-black">
  <img src="{{Storage::url($product->image)}}" alt="" class="w-full h-full object-cover">
  </div>
 
- <div class="h-full w-1/2 ml-4 space-y-4 font-dancing pt-12">
- <h2 class="text-4xl">{{$product->name}}</h2>
- <p class="text-2xl font-bold">{{$product->price}} KES</p>
- <p class="text-lg">{{$product->description}}</p>
- <div>
-  <label for="quantity" class="text-xl block pb-1">Quanity</label>
-  <input type="number" name="quantity" value="1" min="1" max="40" id="quantity" class="text-xl block">
- </div>
- <a href="" class="px-14 py-2 border border-black block text-center">Add To Wishlist</a>
-                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" value="{{ $product->id }}" name="id">
-                        <input type="hidden" value="{{ $product->name }}" name="name">
-                        <input type="hidden" value="{{ $product->price }}" name="price">
-                        <input type="hidden" value="{{ $product->image }}"  name="image">
-                        <input type="hidden" value="1" name="quantity">
-                        <button class="w-full py-2 text-white bg-black rounded" id="addToCart">Add To Cart</button>
-                    </form>
- </div>
+ <div class="h-full w-1/3 ml-8 space-y-4 pt-12">
+ <h2 class="text-4xl font-dancing">{{$product->name}}</h2>
+ <p class="text-2xl text-green-600">Ksh {{$product->price}}</p>
+ <p class="text-lg font-dancing">{{$product->description}}</p>
+
+ <div class="flex items-center space-x-9">
+      <input type="number" name="quantity" value="1"  min="1" max="50" id="quantity" class="text-xl w-16 text-center rounded-md">
+      <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" value="{{ $product->id }}" name="id">
+        <input type="hidden" value="{{ $product->name }}" name="name">
+        <input type="hidden" value="{{ $product->price }}" name="price">
+        <input type="hidden" value="{{ $product->image }}"  name="image">
+        <input type="hidden" value="1"  name="quantity">
+        <button class="w-48 h-12 text-white bg-black rounded font-dancing border hover:bg-white hover:border-yellow-900 hover:text-black hover:font-semibold duration-100 ease-out" id="addToCart">Add To Cart</button>
+    </form>
+    </div>
+    {{-- Category name --}}
+    <p class="pt-4 font-dancing opacity-80">Category: {{$product->category->name}}</p>
+    {{-- Share product --}}
+    <div>
+        <div class="flex items-center space-x-3 font-dancing opacity-80">
+            <p>Share: </p>
+
+            <a href="">
+            
+                <i class="fa-brands fa-facebook text-lg"></i>
+            </a>
+        
+            <a href="">
+
+                <i class="fa-brands fa-instagram text-lg"></i>
+            </a>
+            <a href="">
+
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
 </section>
 @endsection

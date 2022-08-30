@@ -48,7 +48,7 @@
 
           {{-- Search --}}
           <div class="hidden md:block">
-              <form action="{{route('shop')}}" method="GET" role="search">
+              <form action="{{route('search')}}" method="GET" role="search">
                  <input type="search" name="search" id="" class="h-8 w-52 rounded shadow-md border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200" placeholder="Search...">
                    <button type="submit" class="bg-black text-white px-3 py-1 -ml-1 h-8 shadow-md"><i class="fa fa-search"></i></button>
               </form>
@@ -85,7 +85,6 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{-- {{ __('Log Out') }} --}}
                                  <button type="submit" class="text-center w-full bg-black text-white px-2 py-2 rounded shadow-sm text-md">Log out</button>
                             </x-dropdown-link>
                         </form>

@@ -1,14 +1,8 @@
 @extends('layouts.main')
-@section('title', 'ManFul - Shop')
+@section('title','Your search')
 @section('content')
-{{-- Filter partials --}}
-@include('partials.filter')
-<section class="font-dancing my-12">
-    <div class="mx-14">
-        {{ $products->links() }}
-    </div>
-
-    <div class="grid grid-cols-3 pt-4 justify-items-center gap-y-20">
+@if($products->count()>0)
+<div class="grid grid-cols-3 pt-4 justify-items-center gap-y-20 my-12">
         @foreach($products as $product)
           <div class="w-80 h-96">
           {{-- Image --}}
@@ -32,5 +26,10 @@
         </div>
         @endforeach
     </div>
-</section>
+    @else
+    <section class="flex flex-col items-center justify-center h-96 space-y-5">
+      <img src="https://img.icons8.com/external-emojis-because-i-love-you-royyan-wijaya/344/external-dead-emojis-and-emoticon-emojis-because-i-love-you-royyan-wijaya.png" alt="  " class="h-32 w-32">
+      <h2 class=" text-2xl font-dancing text-center">Your search term did not <br> match our records</h2>
+    </section>
+    @endif
 @endsection

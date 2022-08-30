@@ -3,10 +3,10 @@
 @section('content')
 {{-- Hero Start --}}
 <section 
-class="hero bg-cover bg-center h-96"
+class="hero bg-cover bg-center h-full"
 style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }}');">
  <div class="flex justify-center text-center h-full w-full">
-  <header class="text-white mt-20 space-y-8 font-dancing tracking-tight">
+  <header class="text-white mt-40 space-y-8 font-dancing tracking-tight">
   <h1 class="md:text-5xl text-2xl ">Grooming, but like never before</h1>
   <p class="md:text-2xl pb-8">Build your custom kit from scratch</p>
   <a href="{{route('shop')}}" class="text-lg px-14 py-2 bg-white text-yellow-800 rounded font-semibold">To Shop</a>
@@ -48,33 +48,24 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 {{-- Text End --}}
 
 {{-- Categories start --}}
-<section class="h-screen font-dancing">
+<section class="h-fit md:h-screen font-dancing">
   {{-- Section title --}}
-  <h2 class="text-3xl mb-2 ml-4">Shop from our categories</h2>
+  <h2 class="text-xl md:text-3xl mb-2 ml-4">Shop from our categories</h2>
   <div class=" border-b-4 border-yellow-800 mb-4 ml-4 w-1/5 rounded-lg"></div>
   {{-- Flex container --}}
-  <div class="flex gap-5 ml-4 h-full">
+  <div class="md:flex md:flex-row flex-col gap-5 ml-4 h-full space-y-5">
     {{-- Left side --}}
     @foreach ($categories as $category)
         
-    <div class="relative w-1/2 bg-white flex justify-center">
+    <div class="relative w-full md:w-1/2 bg-white flex justify-center">
       <div class=" h-full w-full">
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
-          <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">{{$category->name}}</a>
+          <a href="" class="text-xl md:text-3xl bg-white border border-white px-16 py-3 md:px-20 md:py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">{{$category->name}}</a>
         </div>
         <img src="{{Storage::url($category->image)}}" alt="" class="w-full h-full object-cover">
       </div>
     </div>
     @endforeach
-    {{-- Right side --}}
-    {{-- <div class="relative w-1/2 bg-white flex justify-center">
-       <div class=" h-full w-full">
-        <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
-          <a href="" class="text-3xl bg-white border border-white px-20 py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">Beard</a>
-        </div>
-        <img src="{{Storage::url('categories\HsGwyVJ3lCGuRZwHL4QhqUARbWlU1wdDvtQx6UWK.jpg')}}" alt="" class="w-full h-full object-cover">
-      </div>
-    </div> --}}
   </div>
 </section>
 {{-- Categories end --}}
@@ -84,7 +75,7 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 {{-- Section title --}}
 <div class="flex justify-between">
     <div class="ml-4 text">
-<h2 class="text-3xl mb-2">Start building your kit</h2>
+<h2 class="text-xl md:text-3xl mb-2">Start building your kit</h2>
   <div class=" border-b-4 border-yellow-800  w-4/5 rounded-lg"></div>
 </div>
 
@@ -98,7 +89,7 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
   {{-- Image --}}
   <div class="h-4/5">
     <a href="{{route('product' ,$product->slug )}}">
-      <img src="{{Storage::url($product->image)}}" alt="{{$product->name}}" class="h-full w-full object-cover">
+      <img src="{{Storage::url($product->image)}}" alt="{{$product->name}}" class="h-full w-full object-cover ">
     </a>
   </div>
   {{-- Details --}}
@@ -117,7 +108,7 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 @endforeach
 </div>
 </section>
-{{-- Product end --}}
+{{-- Products end --}}
 
 {{-- Deal start --}}
 <section class="flex h-screen mt-28">

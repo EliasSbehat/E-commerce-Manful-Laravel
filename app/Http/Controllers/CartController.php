@@ -18,7 +18,6 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request){
-        // $userId = Auth::user()->id;
         $cartdata = \Cart::add([
             'id'=>$request->id,
             'name'=>$request->name,
@@ -29,14 +28,11 @@ class CartController extends Controller
             ),
             'associatedModel' => 'Product'
             ]);
-            // dd($cartdata);
-        // session()->flash('success', 'Product is Added to Cart Successfully !');
-            // $previous = url()->previous();
             return back();
     }
 
     public function updateCart(Request $request){
-         \Cart::update(
+         $cart = \Cart::update(
             $request->id,
             [
                 'quantity'=> [

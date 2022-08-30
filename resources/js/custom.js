@@ -12,6 +12,8 @@ addToCartBtn.addEventListener('click', ()=>{
   }, 2000);
 })
 
+//
+
 
 //Show and hide mobile navigation on icon click
 const btnMobile = document.getElementById('btnMobile');
@@ -40,14 +42,14 @@ let x = setInterval(function() {
   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Display the result in the element with id="demo"
+  // Display the result in the element with id="countdown"
   document.getElementById('countdown').innerHTML = days + 'd ' + hours + 'h '
   + minutes + 'm ' + seconds + 's ';
 
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById('demo').innerHTML = 'EXPIRED';
+    document.getElementById('countdown').innerHTML = 'EXPIRED';
   }
 }, 1000);
 
