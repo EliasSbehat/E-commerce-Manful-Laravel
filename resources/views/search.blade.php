@@ -28,8 +28,8 @@
     </div>
     @else
     <section class="flex flex-col items-center justify-center h-96 space-y-5">
-      <img src="https://img.icons8.com/external-emojis-because-i-love-you-royyan-wijaya/344/external-dead-emojis-and-emoticon-emojis-because-i-love-you-royyan-wijaya.png" alt="  " class="h-32 w-32">
-      <h2 class=" text-2xl font-dancing text-center">Your search term did not <br> match our records</h2>
+      <img src="https://img.icons8.com/external-emojis-because-i-love-you-royyan-wijaya/344/external-dead-emojis-and-emoticon-emojis-because-i-love-you-royyan-wijaya.png" alt="  " class="h-20 w-20">
+      <h2 class=" text-2xl font-dancing text-center">No Results</h2>
     </section>
     @endif
 @endsection

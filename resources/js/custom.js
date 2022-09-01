@@ -1,26 +1,10 @@
-//Display success message after user clicks on add to cart button
-let messages = document.querySelector('.message');
-const addToCartBtn = document.getElementById('addToCart');
-addToCartBtn.addEventListener('click', ()=>{
-  //Set the text in the p tag inside the div 
-  messages.firstElementChild.innerHTML = 'Product Added Successfully!';
-  //Remove the hidden class
-  messages.classList.remove('hidden');
-  //Display the message for 2 seconds
-  setTimeout(function(){
-    messages.style.display = 'none';
-  }, 2000);
-})
-
-//
-
-
 //Show and hide mobile navigation on icon click
 const btnMobile = document.getElementById('btnMobile');
 const mobileNav = document.getElementById('mobileNav');
 
 btnMobile.addEventListener('click', function(){
-  mobileNav.classList.toggle('translate-x-0')
+  mobileNav.classList.toggle('translate-x-64');
+  mobileNav.classList.toggle('translate-x-0');
 })
 
 //Offer countdown logic
@@ -53,3 +37,16 @@ let x = setInterval(function() {
   }
 }, 1000);
 
+//Display success message after user clicks on add to cart button
+let messages = document.querySelector('.message');
+const addToCartBtn = document.getElementById('addToCart');
+addToCartBtn.addEventListener('click', ()=>{
+  //Set the text in the p tag inside the div 
+  messages.firstElementChild.innerHTML = 'Product Added Successfully!';
+  //Remove the hidden class
+  messages.classList.remove('hidden');
+  //Display the message for 2 seconds
+  setTimeout(function(){
+    messages.style.display = 'none';
+  }, 2000);
+})

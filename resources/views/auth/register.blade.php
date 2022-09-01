@@ -2,7 +2,8 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
+                 <i class="fa-solid fa-m font-dancing text-4xl text-yellow-900">anful | Register</i>
             </a>
         </x-slot>
 

@@ -4,10 +4,10 @@
 {{-- Hero Start --}}
 <section 
 class="hero bg-cover bg-center h-full"
-style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }}');">
+style="background-image: url('{{asset('img/lance-reis-PIXedTANzWg-unsplash.jpg')}}');">
  <div class="flex justify-center text-center h-full w-full">
-  <header class="text-white mt-40 space-y-8 font-dancing tracking-tight">
-  <h1 class="md:text-5xl text-2xl ">Grooming, but like never before</h1>
+  <header class="text-white space-y-8 mt-36 font-dancing tracking-tight">
+  <h1 class="md:text-5xl text-3xl ">Grooming, but like never before</h1>
   <p class="md:text-2xl pb-8">Build your custom kit from scratch</p>
   <a href="{{route('shop')}}" class="text-lg px-14 py-2 bg-white text-yellow-800 rounded font-semibold">To Shop</a>
   </header>
@@ -18,7 +18,7 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 <!-- Icons start -->
 <section>
 <div
-      class="flex justify-evenly h-36 items-center md:text-2xl text-lg text-center md:leading-10 md:font-bold font-medium md:py-8 py-0 text-black font-dancing"
+      class="flex justify-evenly h-36 items-center md:text-2xl text-lg text-center md:leading-10 md:font-bold font-medium md:py-8 py-0 text-yellow-900 font-dancing"
     >
       <div class="space-y-6">
         <i class="fa-brands fa-opencart"></i>
@@ -38,7 +38,7 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 
 {{-- Text Start --}}
 <section class="flex flex-col text-center h-96 my-12 font-dancing border-black bg-gray-100">
-  <h2 class="text-2xl font-bold text-amber-900 pt-20 pb-10">How it works</h2>
+  <h2 class="text-3xl font-bold text-amber-900 pt-20 pb-10">Why Manful</h2>
   <div class=" leading-loose tracking-wider">  
     <p>We believe no size fits-all. Here at Manful we let you pick your grooming essentials.</p>
     <p>The minimum order amount is <b> 200KES</b> from our wide range of products.</p>
@@ -111,9 +111,9 @@ style="background-image: url('{{  asset('img/supply-USghnHKesaM-unsplash.jpg') }
 {{-- Products end --}}
 
 {{-- Deal start --}}
-<section class="flex h-screen mt-28">
-<div class="w-1/2">
-<img src="https://m.media-amazon.com/images/I/81WkoAtwsKL._SL1500_.jpg" alt="" class="h-full w-full object-fit">
+<section class="flex h-full mt-28">
+<div class="w-full md:w-1/2">
+<img src="https://m.media-amazon.com/images/I/81WkoAtwsKL._SL1500_.jpg" alt="Beard Products" class="h-full w-full object-fit">
 </div>
 <div class="flex flex-col items-center justify-center space-y-8 w-1/2 font-dancing pt-8 relative">
 <h2 class="text-xl text-rose-700">Deal of the week</h2>
