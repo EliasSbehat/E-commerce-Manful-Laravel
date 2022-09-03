@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function featuredSection()
     {
-        $categories = Category::all()->sortByDesc('created_at');
+        $categories = Category::all()->take(2)->sortByDesc('created_at');
         // dd($categories);
         $products = Product::all()->take(6);
         // $products = Product::all()->toJson();
@@ -22,8 +22,9 @@ class HomeController extends Controller
     public function listProducts()
     {
         $products = Product::paginate(5);
+        $categories = Category::all();
     
-        return view('shop', compact('products'));
+        return view('shop', compact('products', 'categories'));
     }
     public function search(Request $request){
         $products = Product::query();
@@ -33,17 +34,18 @@ class HomeController extends Controller
         $products = $products->paginate(5);
         return view('search',compact('products'));
     }
-    public function filter(Request $request){
-        //Capture name of the request received
-       
-       //Access properties in the relationship
-      
-       
+
+    public function filter(Request $request, $id){
+     $catid = $request->id;
+     $products = Product::where('category_id', $catid)->get();
+     $categories = Category::all();
+     return view ('shop', compact('products', 'categories'));
 
     }
     public function singleProduct($slug)
     {
         $product  = Product::where('slug', $slug)->firstOrFail();
+        
         return view('detail', compact('product'));
     }
 }

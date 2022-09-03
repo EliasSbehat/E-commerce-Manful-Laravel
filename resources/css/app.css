@@ -16,4 +16,8 @@
     grid-row-gap: 3rem;
     width: 90vw;
 }
-
+.active{
+  background-color: black;
+  color: white;
+  padding : 0 10px;
+}

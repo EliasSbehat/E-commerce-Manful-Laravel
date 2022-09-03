@@ -60,7 +60,11 @@ style="background-image: url('{{asset('img/lance-reis-PIXedTANzWg-unsplash.jpg')
     <div class="relative w-full md:w-1/2 bg-white flex justify-center">
       <div class=" h-full w-full">
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
-          <a href="" class="text-xl md:text-3xl bg-white border border-white px-16 py-3 md:px-20 md:py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200">{{$category->name}}</a>
+           <form action="{{route('filter', $category->id)}}" method="POST">
+              @csrf
+              <input type="hidden" name="id" value="{{$category->id}}">
+              <button  class="text-xl md:text-3xl bg-white border border-white px-16 py-3 md:px-20 md:py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-200" type="submit">{{$category->name}}</button>
+            </form>
         </div>
         <img src="{{Storage::url($category->image)}}" alt="" class="w-full h-full object-cover">
       </div>

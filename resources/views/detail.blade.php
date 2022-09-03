@@ -25,7 +25,7 @@
         <input type="hidden" value="{{ $product->price }}" name="price">
         <input type="hidden" value="{{ $product->image }}"  name="image">
         <input type="hidden" value="1"  name="quantity">
-        <button class="w-48 h-12 text-white bg-black rounded font-dancing border hover:bg-white hover:border-yellow-900 hover:text-black hover:font-semibold duration-100 ease-out" id="addToCart">Add To Cart</button>
+        <button type="submit" class="w-48 h-12 text-white bg-black rounded font-dancing border hover:bg-white hover:border-yellow-900 hover:text-black hover:font-semibold duration-100 ease-out" id="addToCart">Add To Cart</button>
     </form>
     </div>
     {{-- Category name --}}
