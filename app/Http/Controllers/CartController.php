@@ -17,14 +17,14 @@ class CartController extends Controller
         return view('cart', compact('cartItems'));
     }
 
-    public function addToCart(Request $request){
-        $cartdata = \Cart::add([
-            'id'=>$request->id,
-            'name'=>$request->name,
-            'price'=>$request->price,
-            'quantity'=>$request->quantity,
+    public function addToCart(){
+        \Cart::add([
+            'id'=>request()->id,
+            'name'=>request()->name,
+            'price'=>request()->price,
+            'quantity'=>request()->quantity,
             'attributes'=>array(
-                'image'=>$request->image,
+                'image'=>request()->image,
             ),
             'associatedModel' => 'Product'
             ]);

@@ -17,14 +17,13 @@
  <p class="text-lg font-dancing">{{$product->description}}</p>
 
  <div class="flex items-center space-x-9">
-      <input type="number" name="quantity" value="1"  min="1" max="50" id="quantity" class="text-xl w-16 text-center rounded-md">
-      <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+     <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="number" name="quantity"   min="1" max="50" id="quantity" class="text-xl w-16 text-center rounded-md">
         <input type="hidden" value="{{ $product->id }}" name="id">
         <input type="hidden" value="{{ $product->name }}" name="name">
         <input type="hidden" value="{{ $product->price }}" name="price">
         <input type="hidden" value="{{ $product->image }}"  name="image">
-        <input type="hidden" value="1"  name="quantity">
         <button type="submit" class="w-48 h-12 text-white bg-black rounded font-dancing border hover:bg-white hover:border-yellow-900 hover:text-black hover:font-semibold duration-100 ease-out" id="addToCart">Add To Cart</button>
     </form>
     </div>

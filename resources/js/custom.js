@@ -7,6 +7,21 @@ btnMobile.addEventListener('click', function(){
   mobileNav.classList.toggle('translate-x-0');
 })
 
+
+//Quantity according to user input
+let input = document.getElementById('quantity');
+input.value = 1
+input.addEventListener('change', quantityChanged)
+
+function quantityChanged(event){
+  var input  = event.target
+  if(isNaN(input.value || input.value <= 0)){
+    input.value = 1
+  }
+  console.log(input.value);
+}
+
+
 //Offer countdown logic
 // Set the date we're counting down to
 var countDownDate = new Date('Jan 5, 2024 15:37:25').getTime();
