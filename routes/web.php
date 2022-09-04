@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 
@@ -37,6 +38,7 @@ Route::post('clear',[CartController::class , 'clearCart'])->name('cart.clear');
 // Admin Routes
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/',[AdminController::class , 'index'])->name('index');
+    Route::resource('/users' , UserController::class);
     Route::resource('/categories',CategoryController::class);
     Route::resource('/products',ProductController::class);
 });

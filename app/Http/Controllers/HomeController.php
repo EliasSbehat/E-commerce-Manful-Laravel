@@ -21,7 +21,7 @@ class HomeController extends Controller
 
     public function listProducts()
     {
-        $products = Product::paginate(5);
+        $products = Product::paginate(6);
         $categories = Category::all();
     
         return view('shop', compact('products', 'categories'));
