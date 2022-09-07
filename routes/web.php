@@ -35,6 +35,10 @@ Route::post('remove', [CartController::class, 'removeCartItem'])->name('cart.rem
 Route::post('clear',[CartController::class , 'clearCart'])->name('cart.clear');
 
 
+Route::get('checkout' , function(){
+return view('checkout');
+})->middleware('auth')->name('checkout');
+
 // Admin Routes
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/',[AdminController::class , 'index'])->name('index');

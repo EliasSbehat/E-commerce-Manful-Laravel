@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         // $products = Product::with('categories')->get();
-        $products= Product::orderBy('created_at', 'desc')->paginate(10);
+        $products= Product::orderBy('created_at', 'desc')->paginate(5);
 
         // $categories = Product::find(1)->categories();
         // dd($products);

@@ -2,8 +2,8 @@
 @section('title', 'ManFul - Details')
 @section('content')
 
-<div class="hidden message p-2 mb-3 bg-green-400 rounded">
-    <p class="text-green-800 ml-4 font-bold"></p>
+<div class="hidden message p-2 mb-3 bg-green-600 rounded">
+    <p class="text-white ml-5 font-bold"></p>
 </div>
 
 <section class="h-screen flex justify-center ml-4 my-4">
@@ -19,7 +19,7 @@
  <div class="flex items-center space-x-9">
      <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="number" name="quantity"   min="1" max="50" id="quantity" class="text-xl w-16 text-center rounded-md">
+        <input type="number" name="quantity"   min="1" max="50" id="quantity" class="text-xl w-16 text-center rounded-md focus:">
         <input type="hidden" value="{{ $product->id }}" name="id">
         <input type="hidden" value="{{ $product->name }}" name="name">
         <input type="hidden" value="{{ $product->price }}" name="price">

@@ -73,12 +73,8 @@
     <p class="mr-3">{{Cart::getTotal()}}KES</p>
 </div>
 <div class="flex justify-between">
-    <form action="">
-        <button class="w-48 h-8 bg-black text-white">Proceed To Checkout</button>
-    </form>
-    <form action="">
-        <button class="mr-2 w-40 h-8 border border-black">Continue Shopping</button>
-    </form>
+        <a href="{{route('checkout')}}" class="py-1 w-48 h-8 bg-black text-white text-center">Proceed To Checkout</a>
+        <a href="{{route('shop')}}" class="py-1 mr-2 w-40 h-8 border border-black text-center">Continue Shopping</a>
 </div>
 </div>
 </section>

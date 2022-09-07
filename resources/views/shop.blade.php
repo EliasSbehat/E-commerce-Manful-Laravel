@@ -5,7 +5,7 @@
 @include('partials.filter')
 <section class="font-dancing my-12">
     <div class="mx-14">
-        {{-- {{ $products->links() }} --}}
+        {{ $products->links() }}
     </div>
 
     <div class="grid grid-cols-3 pt-4 justify-items-center gap-y-20">

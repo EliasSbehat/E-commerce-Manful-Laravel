@@ -21,7 +21,7 @@ class HomeController extends Controller
 
     public function listProducts()
     {
-        $products = Product::paginate(6);
+        $products = Product::paginate(5);
         $categories = Category::all();
     
         return view('shop', compact('products', 'categories'));
@@ -37,7 +37,7 @@ class HomeController extends Controller
 
     public function filter(Request $request, $id){
      $catid = $request->id;
-     $products = Product::where('category_id', $catid)->get();
+     $products = Product::where('category_id', $catid)->paginate(6);
      $categories = Category::all();
      return view ('shop', compact('products', 'categories'));
 

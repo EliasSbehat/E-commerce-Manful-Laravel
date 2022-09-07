@@ -4,7 +4,7 @@
 {{-- Hero Start --}}
 <section 
 class="hero bg-cover bg-center h-full"
-style="background-image: url('{{asset('img/lance-reis-PIXedTANzWg-unsplash.jpg')}}');">
+style="background-image: url('{{asset('img/hero-img.jpg')}}');">
  <div class="flex justify-center text-center h-full w-full">
   <header class="text-white space-y-8 mt-36 font-dancing tracking-tight">
   <h1 class="md:text-5xl text-3xl ">Grooming, but like never before</h1>

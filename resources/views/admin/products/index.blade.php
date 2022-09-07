@@ -9,14 +9,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-between mb-4">
                  <a href="{{route('admin.products.create')}}" class="p-2 my-2 bg-green-400 hover:bg-green-600 text-white rounded-lg font-bold">Add new product</a>
+                 {{-- Status message --}}
                  @if(session('message'))
                 <div  class="message w-64 h-10 flex items-center bg-green-200 rounded-md p-2 font-medium">
                         <p>{{session('message')}}</p>                    
                     </div>
                     @endif
-               
             </div>
-<div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                {{-- Pagination --}}
+            <div class="mb-4">
+            {{ $products->links() }}
+            </div>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-100">
             <tr>
@@ -70,13 +74,10 @@
                         </div>
                 </td>
             </tr>
-           
                         @endforeach
-
         </tbody>
     </table>
 </div>
-
         </div>
     </div>
 </x-admin-layout>
