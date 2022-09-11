@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function featuredSection()
     {
-        $categories = Category::all()->take(2)->sortByDesc('created_at');
+        $categories = Category::all()->take(4)->sortByDesc('created_at');
         // dd($categories);
         $products = Product::all()->take(6);
         // $products = Product::all()->toJson();

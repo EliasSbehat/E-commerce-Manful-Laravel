@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
-
+use App\Models\Product;
 class CartController extends Controller
 {
     public function cartList(Request $request)
@@ -18,13 +18,16 @@ class CartController extends Controller
     }
 
     public function addToCart(){
+       $id = request()->id;
+       $product = Product::find($id);
+       $price = intval($product->price);
         \Cart::add([
-            'id'=>request()->id,
-            'name'=>request()->name,
-            'price'=>request()->price,
+            'id'=>$product->id,
+            'name'=>$product->name,
+            'price'=>$price,
             'quantity'=>request()->quantity,
             'attributes'=>array(
-                'image'=>request()->image,
+                'image'=>$product->image,
             ),
             'associatedModel' => 'Product'
             ]);

@@ -7,15 +7,6 @@
 .hero{
  box-shadow:inset 0 0 0 2000px rgba(8, 8, 8, 0.3);
 }
-.products{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  max-width: 1170px;
-  margin: 0 auto;
-  grid-column-gap: 2.5rem;
-    grid-row-gap: 3rem;
-    width: 90vw;
-}
 .active{
   background-color: black;
   color: white;

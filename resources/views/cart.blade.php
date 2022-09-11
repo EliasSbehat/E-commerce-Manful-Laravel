@@ -42,19 +42,19 @@
     </div>
    </td>
    <td>
-       <form action="{{ route('cart.update') }}" method="POST">
+    <form action="{{ route('cart.update') }}" method="POST">
         @csrf
         <input type="hidden" name="id" value="{{$item->id}}">
-    <input type="number" min="1" max="40" name="quantity" id="" class="w-16 text-xl block" value="{{$item->quantity}}">
+        <input type="number" min="1" max="40" name="quantity" id="" class="w-16 text-xl block" value="{{$item->quantity}}">
         <button type="submit" class="text-sm text-blue-600 ">Change</button>
     </form>
    </td>
    <td class="font-semibold">{{$item->price * $item->quantity}}KES</td>
    <td>
-    <form action="{{route('cart.remove')}}" method="POST"  onsubmit="return confirm('Are you sure?')">
+    <form action="{{route('cart.remove')}}" method="POST"  onsubmit="return confirm('Remove cart item?')">
      @csrf
      <input type="hidden" value="{{ $item->id }}" name="id">
-     <button type="submit" class="text-sm underline text-red-500">Remove</button>
+     <button type="submit" class="text-red-400"><i class="text-lg fa-solid fa-trash"></i></button>
     </form>
    </td>
   </tr>

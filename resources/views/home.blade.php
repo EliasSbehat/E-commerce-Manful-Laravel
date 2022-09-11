@@ -48,16 +48,15 @@ style="background-image: url('{{asset('img/hero-img.jpg')}}');">
 {{-- Text End --}}
 
 {{-- Categories start --}}
-<section class="h-fit md:h-screen font-dancing">
+<section class="h-fit font-dancing">
   {{-- Section title --}}
   <h2 class="text-xl md:text-3xl mb-2 ml-4">Shop from our categories</h2>
   <div class=" border-b-4 border-yellow-800 mb-4 ml-4 w-1/5 rounded-lg"></div>
   {{-- Flex container --}}
-  <div class="md:flex md:flex-row flex-col gap-5 ml-4 h-full space-y-5">
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-5 ml-4 h-fit space-y-5">
     {{-- Left side --}}
     @foreach ($categories as $category)
-        
-    <div class="relative w-full md:w-1/2 bg-white flex justify-center">
+    <div class="relative">
       <div class=" h-full w-full">
         <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
            <form action="{{route('filter', $category->id)}}" method="POST">
@@ -87,7 +86,7 @@ style="background-image: url('{{asset('img/hero-img.jpg')}}');">
 <a href="" class="hover:underline transition duration-100 text-yellow-900 font-semibold text-lg">View All <i class="fa-solid fa-angles-right"></i></a>
 </div>
 </div>
-<div class="products justify-items-center pt-4 ">
+<div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-y-12  justify-items-center pt-4 ">
 @foreach($products as $product)
   <div class="w-80 h-96">
   {{-- Image --}}

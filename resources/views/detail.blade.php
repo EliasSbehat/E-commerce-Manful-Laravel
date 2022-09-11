@@ -19,11 +19,8 @@
  <div class="flex items-center space-x-9">
      <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="number" name="quantity"   min="1" max="50" id="quantity" class="text-xl w-16 text-center rounded-md focus:">
+        <input type="number" name="quantity" min="1" max="50" id="quantity" class="text-xl w-16 text-center rounded-md focus:">
         <input type="hidden" value="{{ $product->id }}" name="id">
-        <input type="hidden" value="{{ $product->name }}" name="name">
-        <input type="hidden" value="{{ $product->price }}" name="price">
-        <input type="hidden" value="{{ $product->image }}"  name="image">
         <button type="submit" class="w-48 h-12 text-white bg-black rounded font-dancing border hover:bg-white hover:border-yellow-900 hover:text-black hover:font-semibold duration-100 ease-out" id="addToCart">Add To Cart</button>
     </form>
     </div>
@@ -33,20 +30,9 @@
     <div>
         <div class="flex items-center space-x-3 font-dancing opacity-80">
             <p>Share: </p>
-
-            <a href="">
-            
-                <i class="fa-brands fa-facebook text-lg"></i>
-            </a>
-        
-            <a href="">
-
-                <i class="fa-brands fa-instagram text-lg"></i>
-            </a>
-            <a href="">
-
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-            </a>
+            <a href=""><i class="fa-brands fa-facebook text-lg"></i></a>
+            <a href=""><i class="fa-brands fa-instagram text-lg"></i></a>
+            <a href=""><i class="fa-brands fa-whatsapp text-lg"></i></a>
         </div>
     </div>
 </div>
