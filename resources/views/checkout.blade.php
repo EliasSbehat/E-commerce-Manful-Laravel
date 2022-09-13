@@ -52,9 +52,9 @@
       <input type="radio" name="payment-option" id="" class=" focus:ring-green-400 text-green-400" value="Paypal">
       <label for="delivery">Paypal</label>
     </div>
-      <div class="w-24">
+      {{-- <div class="w-24">
         <img src="{{asset('img/paypal-logo.jpg')}}" alt="" class="h-full w-full object-fit">
-      </div>
+      </div> --}}
   </div>
   {{-- Mpesa --}}
   <div class="space-y-2">
@@ -62,9 +62,9 @@
       <input type="radio" name="payment-option" id="" class=" focus:ring-green-400 text-green-400" value="Mpesa">
       <label for="delivery">Mpesa</label>
     </div>
-      <div class="w-24">
+      {{-- <div class="w-24">
         <img src="{{asset('img/mpesa-logo.jpeg')}}" alt="" class="h-full w-full object-fit">
-      </div>
+      </div> --}}
   </div>
 </div>
 {{-- Submit Button --}}

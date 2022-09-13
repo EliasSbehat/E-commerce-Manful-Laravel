@@ -8,6 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ['customer_id','order_id','product_name','quantity','total','payment_type','status'];
-    
+
+
+    protected $fillable = ['customer_id','order_no', 'payment_type'];
+
+
+    // Inverse one to many relationship to Customer model
+    public function customers()
+    {
+        return $this->belongsTo(Customer::class ,'customer_id');
+    }
+    //One to many relationship to OrderDetail model
+    public function orderDetails(){
+        return $this->hasMany(OrderDetail::class);
+    }
 }

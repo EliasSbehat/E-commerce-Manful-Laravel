@@ -27,7 +27,7 @@ Route::post('update-cart',[CartController::class , 'updateCart'])->name('cart.up
 Route::post('remove', [CartController::class, 'removeCartItem'])->name('cart.remove');
 Route::post('clear',[CartController::class , 'clearCart'])->name('cart.clear');
 
-//Order and checkout
+//Checkout
 Route::middleware('auth')->group(function(){
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('checkout/store', [CheckoutController::class, 'store'])->name('checkout-store');

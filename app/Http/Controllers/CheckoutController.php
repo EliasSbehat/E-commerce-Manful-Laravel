@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -21,7 +24,7 @@ class CheckoutController extends Controller
             'address'=>'required|max:100',
         ]);
         //  Save customer into database
-        Customer::create([
+        $customer = Customer::create([
             'user_id'=>auth()->user()->id,
             'firstname'=>$request->firstname,
             'lastname'=>$request->lastname,
@@ -30,8 +33,27 @@ class CheckoutController extends Controller
             'address'=>$request->address,
         ]);
 
-        //Save order into database
-        
+        //Save order into orders table 
+        $cartItems = \Cart::getContent();
+        $length = 10;
+        $order_no = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, $length);
+        uniqid($order_no);
+        $order = Order::create([
+            'customer_id'=>$customer->id,
+            'order_no'=>$order_no,
+            'payment_type' => request('payment-option'),
+        ]);
+        //Save each order item in order_details table
+        foreach ($cartItems as  $item) {
+            OrderDetail::create([
+                'order_id'=>$order->id, 
+                'product_name'=>$item->name,
+                'quantity'=>$item->quantity,
+                'total'=>$item->price * $item->quantity,
+            ]);
+        }
+        //Clear the Cart
+        \Cart::clear();
 
         return redirect('confirmation');
      

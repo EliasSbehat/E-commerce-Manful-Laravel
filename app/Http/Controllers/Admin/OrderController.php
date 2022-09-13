@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Order;
+use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::orderBy('created_at','desc')->get();
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -46,18 +49,14 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $singleOrder = Order::findOrFail($id);
+        return view('admin.orders.details', compact('singleOrder'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+   
+    public function edit(Order $order)
     {
-        //
+        return view('admin.orders.edit' , compact('order'));
     }
 
     /**
@@ -67,9 +66,17 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            'status'=>'required',
+        ]);
+        
+        $order->status = $request->status;
+        $order->payment_status = $request->payment_status;
+        $order->save();
+        
+        return to_route('admin.orders.index')->with('success','Order Updated successfully');
     }
 
     /**
