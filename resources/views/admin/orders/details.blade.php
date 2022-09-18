@@ -11,7 +11,15 @@
        <div class="w-full h-32 bg-gray-50 rounded-lg drop-shadow-xl pl-6 pt-4 space-y-2 mt-3">
         <h5 class="text-xl">Order details : <span class="font-bold text-lg">#{{$singleOrder->order_no}}</span></h5>
         <p>{{date_format($singleOrder->created_at ,"M j, Y, h:i A")}}</p>
-         <p>Status : <span class="bg-amber-200 w-fit px-1 py-1 rounded-md text-sm">{{$singleOrder->status}}</span></p>
+        @if($singleOrder->status == 'pending')
+        <p>Status : <span class="text-white bg-amber-400 w-fit px-1 py-1 rounded-md text-sm">{{$singleOrder->status}}</span></p>
+         @elseif($singleOrder->status == 'shipped')
+         <p>Status : <span class="text-white bg-indigo-400 w-fit px-1 py-1 rounded-md text-sm">{{$singleOrder->status}}</span></p>
+        @elseif($singleOrder->status == 'completed')
+        <p>Status : <span class="text-white bg-green-400 w-fit px-1 py-1 rounded-md text-sm">{{$singleOrder->status}}</span></p>
+         @elseif($singleOrder->status == 'cancelled')
+         <p>Status : <span class="text-white bg-stone-400 w-fit px-1 py-1 rounded-md text-sm">{{$singleOrder->status}}</span></p>
+        @endif
 
        </div>
        {{-- Billing address , shipping address , payment option --}}
@@ -31,7 +39,7 @@
         </div>
         <div class="w-full h-full space-y-1">
           <h5 class="font-bold pb-2">Payment Method</h5>
-          {{-- <p>{{$singleOrder->orderDetails->payment_type}}</p> --}}
+          <p>{{$singleOrder->payment_type}}</p>
         </div>
        </div>
        {{-- Order details --}}

@@ -14,7 +14,7 @@
             
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-green-500">
+        <thead class=" text-white uppercase bg-green-400 font-bold">
             <tr>
                 <th scope="col" class="py-3 px-6">
                     Name

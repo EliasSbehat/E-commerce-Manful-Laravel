@@ -60,16 +60,4 @@ num.addEventListener('input', function(){
 //   }
 // }, 1000);
 
-//Display success message after user clicks on add to cart button
-let messages = document.querySelector('.message');
-const addToCartBtn = document.getElementById('addToCart');
-addToCartBtn.addEventListener('click', ()=>{
-  //Set the text in the p tag inside the div 
-  messages.firstElementChild.innerHTML = 'Product Added Successfully!';
-  //Remove the hidden class
-  messages.classList.remove('hidden');
-  //Display the message for 2 seconds
-  setTimeout(function(){
-    messages.style.display = 'none';
-  }, 2000);
-})
+

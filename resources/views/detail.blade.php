@@ -2,8 +2,10 @@
 @section('title', 'ManFul - Details')
 @section('content')
 
-<div class="hidden message p-2 mb-3 bg-green-600 rounded">
-    <p class="text-white ml-5 font-bold"></p>
+<div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
+    @if(session('message'))
+    <p class="bg-green-300 text-white ml-5 font-bold p-2 mb-3 rounded-lg">{{session('message')}}</p>
+    @endif
 </div>
 
 <section class="h-screen flex justify-center ml-4 my-4">

@@ -31,7 +31,7 @@ class CartController extends Controller
             ),
             'associatedModel' => 'Product'
             ]);
-            return back();
+            return back()->with('message','Product Added successfully');
     }
 
     public function updateCart(Request $request){

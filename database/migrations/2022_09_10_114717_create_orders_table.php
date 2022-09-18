@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('payment_status')->default('unpaid');
             $table->string('status')->default('pending');
             $table->string('payment_type');
+            $table->integer('total');
             $table->timestamps();
         });
     }

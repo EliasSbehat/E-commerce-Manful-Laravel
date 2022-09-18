@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\UserAccountController;
 
 //Site Routes
 Route::get('/',[HomeController::class , 'featuredSection'])->name('home');
@@ -26,6 +27,18 @@ Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
 Route::post('update-cart',[CartController::class , 'updateCart'])->name('cart.update');
 Route::post('remove', [CartController::class, 'removeCartItem'])->name('cart.remove');
 Route::post('clear',[CartController::class , 'clearCart'])->name('cart.clear');
+
+// User account and order history
+Route::middleware('auth')->group(function(){
+    Route::get('/myaccount',[UserAccountController::class , 'account'])->name('account');
+    Route::get('/myaccount/edit/{id}',[UserAccountController::class, 'editProfile'])->name('edit-profile');
+    Route::get('/myaccount/password/{id}',[UserAccountController::class, 'editPassword'])->name('edit-password');
+    Route::post('/myaccount/updateprofile', [UserAccountController::class , 'updateProfile'])->name('update-profile');
+    Route::post('/myaccount/updatepassword', [UserAccountController::class , 'updatePassword'])->name('update-password');
+    Route::get('/myorders',[UserAccountController::class , 'orders'])->name('orders');
+
+});
+
 
 //Checkout
 Route::middleware('auth')->group(function(){

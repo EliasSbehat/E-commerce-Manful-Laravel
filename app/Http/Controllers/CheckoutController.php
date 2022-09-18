@@ -38,10 +38,14 @@ class CheckoutController extends Controller
         $length = 10;
         $order_no = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, $length);
         uniqid($order_no);
+        foreach($cartItems as $item){
+            $total = $item->price * $item->quantity;
+        }
         $order = Order::create([
             'customer_id'=>$customer->id,
             'order_no'=>$order_no,
             'payment_type' => request('payment-option'),
+            'total'=>$total,
         ]);
         //Save each order item in order_details table
         foreach ($cartItems as  $item) {
@@ -56,7 +60,6 @@ class CheckoutController extends Controller
         \Cart::clear();
 
         return redirect('confirmation');
-     
 
     }
 }

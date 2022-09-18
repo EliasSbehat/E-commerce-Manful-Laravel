@@ -17,9 +17,9 @@
         @method('PUT')
         <input type="hidden" name="name" value="{{$user->name}}">
         <div>
-          <label for="role" class="block my-4">Role</label>
+          <label for="role" class="block my-4">Change Role</label>
           <select name="is_admin" class="w-56 rounded-md border-gray-200 focus:border-gray-500 focus:ring-gray-500">
-            <option value="" selected>Select Role</option>
+            <option value="{{$user->is_admin}}" selected>{{ $user->is_admin == 1 ? 'Admin' : 'User' }}</option>
             <option value="0">User</option>
             <option value="1">Admin</option>
   
