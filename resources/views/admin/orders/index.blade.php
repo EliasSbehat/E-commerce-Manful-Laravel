@@ -12,9 +12,11 @@
             @endif
         </div>
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-    
+    @if($pendingOrders->count()>0)
     {{-- Pending Orders --}}
-        
+     <div class="my-2 px-3">
+        {{$pendingOrders->links()}}
+    </div>
     <h5 class="text-2xl font-bold py-4 px-3">Pending Orders</h5>
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-sm text-gray-700 uppercase bg-gray-50">
@@ -50,61 +52,61 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($orders as $order)
-            @if($order->status == 'pending' || $order->payment_status == 'unpaid')
+            @foreach ($pendingOrders as $pendingOrder)
             <tr class="bg-white border-b">
                 <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                  <a href="{{route('admin.orders.show', $order->id)}}">
-                    <h5 class="text-cyan-500 font-semibold uppercase">#{{$order->id}} by 
+                  <a href="{{route('admin.orders.show', $pendingOrder->id)}}">
+                    <h5 class="text-cyan-500 font-semibold uppercase">#{{$pendingOrder->id}} by 
                         <br>
-                        {{$order->customers->firstname}} {{$order->customers->lastname}}<h5>                      
+                        {{$pendingOrder->customers->firstname}} {{$pendingOrder->customers->lastname}}<h5>                      
                     </a>
                 </td>
                 <td class="py-4 px-3">
-                    {{date("m-d-Y", strtotime($order->created_at))}}
+                    {{date("m-d-Y", strtotime($pendingOrder->created_at))}}
                 </td>
                 <td class="py-4 px-10">
-                   @if($order->payment_status == 'unpaid')
+                   @if($pendingOrder->payment_status == 'unpaid')
                     <button class="px-2 py-1 text-white font-bold bg-amber-500 text-center cursor-default rounded-lg">
-                        {{$order->payment_status}}
+                        {{$pendingOrder->payment_status}}
                     </button>
-                    @endif
-                   @if($order->payment_status == 'paid')
-                    <button class="px-2 py-1 text-white font-bold bg-green-400 text-center cursor-default rounded-lg">
-                        {{$order->payment_status}}
+                   @elseif($pendingOrder->payment_status == 'paid')
+                   <button class="px-2 py-1 text-white font-bold bg-green-500 text-center cursor-default rounded-lg">
+                        {{$pendingOrder->payment_status}}
                     </button>
                     @endif
                 </td>
                 <td class="py-4 px-6">
-                    {{$order->customers->city}} , {{$order->customers->address}} 
+                    {{$pendingOrder->customers->city}} , {{$pendingOrder->customers->address}} 
                 </td>
                 <td class="py-4 pr-10 pl-4">
-
-                  @if($order->status == 'pending')    
-                  <button class="px-2 py-1 text-white font-bold bg-amber-500 text-center cursor-default rounded-lg">
-                    {{$order->status}}
-                  </button>
-                  @elseif($order->status == 'shipped')
-                  <button class="px-2 py-1 text-white font-bold bg-indigo-400 text-center cursor-default rounded-lg">
-                    {{$order->status}}
-                  </button>
-                  @elseif($order->status == 'completed')
-                  <button class="px-2 py-1 text-white font-bold bg-emerald-400 text-center cursor-default rounded-lg">
-                    {{$order->status}}
-                  </button>
-                  @endif
+                     @if($pendingOrder->status == 'pending')
+                    <button class="px-2 py-1 text-white font-bold bg-amber-500 text-center cursor-default rounded-lg">
+                        {{$pendingOrder->status}}
+                    </button>
+                   @elseif($pendingOrder->status == 'shipped')
+                   <button class="px-2 py-1 text-white font-bold bg-indigo-500 text-center cursor-default rounded-lg">
+                        {{$pendingOrder->status}}
+                    </button>
+                    @endif
                 </td>
                 <td class="py-4 px-3 text-white font-bold">
-                 <a href="{{route('admin.orders.edit' , $order->id)}}" class="px-3 py-1 bg-cyan-500 rounded-lg">Update</a>
+                 <a href="{{route('admin.orders.edit' , $pendingOrder->id)}}" class="px-3 py-1 bg-cyan-500 rounded-lg">Update</a>
                 </td>
             </tr>
-            @endif
-            @endforeach
+       @endforeach
             
         </tbody>
     </table>
+    @else
+    <h5 class="text-center">No Pending Orders</h5>
+    @endif
+
     {{-- All Orders --}}
+
     <h5 class="text-2xl font-bold py-4 px-3 mt-12">All Orders</h5>
+    <div class="my-2 px-3">
+        {{$orders->links()}}
+    </div>
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-sm text-gray-700 uppercase bg-gray-50">
             <tr>
@@ -187,7 +189,7 @@
                   @endif
                 </td>
                 <td class="py-4 px-3 text-white font-bold">
-                 <a href="{{route('admin.orders.edit' , $order->id)}}" class="px-3 py-1 bg-cyan-500 rounded-lg">Update</a>
+                 <a href="{{route('admin.orders.edit' , $order->id)}}" class="px-3 py-1 bg-blue-600 rounded-lg">Update</a>
                 </td>
             </tr>
                      @endforeach

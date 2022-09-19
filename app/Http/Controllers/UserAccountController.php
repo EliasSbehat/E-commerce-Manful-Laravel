@@ -59,8 +59,22 @@ class UserAccountController extends Controller
     public function orders()
     {
         $user_id = auth()->user()->id;
-        $orders = DB::table('customers')->join('orders' , 'customers.id', '=' , 'orders.customer_id')->where('user_id', $user_id)->get();
+        $orders = DB::table('customers')->join('orders' , 'customers.id', '=' , 'orders.customer_id')->where('user_id', $user_id)->orderByDesc('status')->get();
         return view('orders' , compact('orders'));
+    }
+
+    public function singleOrder($order_no){
+        $singleOrder = Order::where('order_no', $order_no)->firstOrFail();
+        return view('singleorder', compact('singleOrder'));
+    }
+
+    public function cancelOrder(Request $request){
+        $id = $request->singleorderid;
+        $currentOrderItem = Order::findOrFail($id);
+        $currentOrderItem->status = 'cancelled';
+        $currentOrderItem->save();
+
+        return back()->with('message','Order cancelled successfully');
     }
 
 }

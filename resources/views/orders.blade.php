@@ -1,68 +1,39 @@
 @extends('layouts.main')
 @section('title' , 'Manful | Orders')
 @section('content')
-<section class="h-full font-dancing">
+
+<section class="h-full font-dancing bg-gray-50">
   @if($orders->count()>0)
-    <h2 class="ml-6 my-4 text-5xl font-dancing text-yellow-900">My Orders</h2>
+    <h2 class="ml-6 my-4 text-5xl font-dancing">My Orders</h2>
         
-<div class="overflow-x-auto relative">
-    <table class="w-2/3 ml-8 mt-4 text-sm text-left text-gray-500">
-        <thead class="font-bold text-white uppercase bg-green-400">
-            <tr>
-                <th scope="col" class="py-3 px-6">
-                    Order No
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    Shipped To
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    Date
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    Status
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    Total
-                </th>
-            </tr>
+    <div class="overflow-x-auto">
+      <table class="text-sm w-2/3 ml-10 text-justify mt-5">
+        <thead class="h-20 border-y border-gray-600 text-yellow-900">
+          <th class="px-2">Order No</th>
+          <th>Shipped To</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Status</th>
         </thead>
         <tbody>
-          
-          @foreach ($orders as $order)
-          <tr class="bg-white border-b ">
-            <td class="py-4 px-6">
-              {{$order->order_no}}
+          @foreach($orders as $order)
+          <tr class="h-16 bg-white drop-shadow-lg border-b border-gray-300">
+            <td class="px-2 text-blue-500 font-semibold">
+              <a href="{{route('single-order', $order->order_no)}}">#{{$order->order_no}}</a>
             </td>
-            <td class="py-4 px-6">
+            <td>
+              <p class="font-bold">{{$order->city}}</p>
               {{$order->address}}
             </td>
-            <td class="py-4 px-6">
-             {{date("m-d-Y", strtotime($order->created_at))}}
+            <td>
+               {{date("M j, Y", strtotime($order->created_at))}}
             </td>
-            <td class="py-4 px-6">
-              @if($order->status == 'pending')    
-                  <button class="px-2 py-1 text-white font-bold bg-amber-500 text-center cursor-default rounded-lg">
-                    {{$order->status}}
-                  </button>
-                  @elseif($order->status == 'shipped')
-                  <button class="px-2 py-1 text-white font-bold bg-indigo-400 text-center cursor-default rounded-lg">
-                    {{$order->status}}
-                  </button>
-                  @elseif($order->status == 'completed')
-                  <button class="px-2 py-1 text-white font-bold bg-emerald-400 text-center cursor-default rounded-lg">
-                    {{$order->status}}
-                  </button>
-                  @elseif($order->status == 'cancelled')
-                  <button class="px-2 py-1 text-white font-bold bg-gray-400 text-center cursor-default rounded-lg">
-                    {{$order->status}}
-                  </button>
-                  @endif
-            </td>
-            <td class="py-4 px-6">
-              $2999
+            <td class="font-bold">2300.0</td>
+            <td>
+               @include('partials.status')
             </td>
           </tr>
-          @endforeach
+         @endforeach
         </tbody>
       </table>
     </div>

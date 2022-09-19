@@ -13,29 +13,29 @@
       {{-- Firstname --}}
       <div>
         <label for="firstname" class="block text-sm pb-2">FirstName <sup>*</sup></label>
-        <input type="text" placeholder="John" required class="w-60 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="firstname" value="{{old('firstname')}}">
+        <input type="text" placeholder="John" required class="w-60 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="firstname" value="">
       </div>
       {{-- Lastname --}}
       <div>
         <label for="lastname" class="block text-sm pb-2">LastName <sup>*</sup></label>
-        <input type="text" placeholder="Doe" required  class="w-60 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="lastname" value="{{old('lastname')}}">
+        <input type="text" placeholder="Doe" required  class="w-60 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="lastname" value="">
       </div>
     </div>
     {{-- Phone number --}}
     <div>
       <label for="phone" class="block text-sm pb-2">Phone Number <sup>*</sup></label>
       <input type="tel"  disabled value="+254" class="w-20 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900">
-      <input type="tel" name="phone"  placeholder="712345678"  class="rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" minlength="9" maxlength="9" value="{{old('phone')}}">
+      <input type="tel" name="phone"  placeholder="712345678"  class="rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" minlength="9" maxlength="9" value="">
     </div>
     {{-- Town\City --}}
     <div>
         <label for="city" class="block text-sm pb-2">Town / City <sup>*</sup></label>
-        <input type="text" placeholder="Nairobi" required  class="w-72 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="city" value="{{old('city')}}">
+        <input type="text" placeholder="Nairobi" required  class="w-72 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="city" value="">
       </div>
     {{-- Delivery address --}}
     <div>
       <label for="address" class="block text-sm pb-2">Delivery Address <sup>*</sup></label>
-      <textarea name="address"  cols="30" rows="5" class="w-2/3 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" required placeholder="Street Name / Apartment / Building / Floor">{{old('address')}}</textarea>
+      <textarea name="address"  cols="30" rows="5" class="w-2/3 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" required placeholder="Street Name / Apartment / Building / Floor"></textarea>
     </div>   
     {{-- Payment method --}}
     <div class="py-2 space-y-2">
@@ -100,7 +100,6 @@
     <h4 class="font-semibold text-lg">Total</h4>
     <p>Ksh {{Cart::getTotal()}}</p>
   </div>
-{{-- Payment Method --}}
 
 </div>
 </div>

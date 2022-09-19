@@ -12,31 +12,35 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\UserAccountController;
 
 //Site Routes
-Route::get('/',[HomeController::class , 'featuredSection'])->name('home');
-Route::get('/shop', [HomeController::class , 'listProducts'])->name('shop');
-Route::get('/product/{slug}',[HomeController::class,'singleProduct'])->name('product');
-
-// Search and Filter
-Route::get('/search', [HomeController::class , 'search'])->name('search');
-Route::post('/shop/{id}', [HomeController::class , 'filter'])->name('filter');
-Route::get('/shop/{id}', [HomeController::class , 'filter'])->name('filter');
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/', 'featuredSection')->name('home');
+    Route::get('/shop', 'listProducts')->name('shop');
+    Route::get('/product/{slug}','singleProduct')->name('product');
+    // Search and Filter
+    Route::get('/search', 'search')->name('search');
+    Route::post('/shop/{id}', 'filter')->name('filter');
+    Route::get('/shop/{id}', 'filter')->name('filter');
+});
 
 // Shopping cart
-Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
-Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
-Route::post('update-cart',[CartController::class , 'updateCart'])->name('cart.update');
-Route::post('remove', [CartController::class, 'removeCartItem'])->name('cart.remove');
-Route::post('clear',[CartController::class , 'clearCart'])->name('cart.clear');
+Route::controller(CartController::class)->group(function(){
+    Route::get('cart', 'cartList')->name('cart.list');
+    Route::post('cart','addToCart')->name('cart.store');
+    Route::post('update-cart' ,'updateCart')->name('cart.update');
+    Route::post('remove','removeCartItem')->name('cart.remove');
+    Route::post('clear', 'clearCart')->name('cart.clear');
+});
 
 // User account and order history
-Route::middleware('auth')->group(function(){
-    Route::get('/myaccount',[UserAccountController::class , 'account'])->name('account');
-    Route::get('/myaccount/edit/{id}',[UserAccountController::class, 'editProfile'])->name('edit-profile');
-    Route::get('/myaccount/password/{id}',[UserAccountController::class, 'editPassword'])->name('edit-password');
-    Route::post('/myaccount/updateprofile', [UserAccountController::class , 'updateProfile'])->name('update-profile');
-    Route::post('/myaccount/updatepassword', [UserAccountController::class , 'updatePassword'])->name('update-password');
-    Route::get('/myorders',[UserAccountController::class , 'orders'])->name('orders');
-
+Route::controller(UserAccountController::class)->middleware('auth')->group(function(){
+    Route::get('/myaccount' , 'account')->name('account');
+    Route::get('/myaccount/edit/{id}', 'editProfile')->name('edit-profile');
+    Route::get('/myaccount/password/{id}', 'editPassword')->name('edit-password');
+    Route::post('/myaccount/updateprofile','updateProfile')->name('update-profile');
+    Route::post('/myaccount/updatepassword','updatePassword')->name('update-password');
+    Route::get('/myorders' , 'orders')->name('orders');
+    Route::get('/myorders/{order_no}' , 'singleOrder')->name('single-order');
+    Route::post('/myorders/cancel', 'cancelOrder')->name('cancel-order');
 });
 
 

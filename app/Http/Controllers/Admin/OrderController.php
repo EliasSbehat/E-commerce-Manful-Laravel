@@ -16,37 +16,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('created_at','desc')->get();
-        return view('admin.orders.index', compact('orders'));
+        $orders = Order::orderByDesc('created_at')->paginate(10);
+        $pendingOrders = Order::where('status','pending')->orwhere('payment_status', 'unpaid')->whereNot('status','cancelled')->orderByDesc('created_at')->paginate(10);
+        return view('admin.orders.index', compact('orders', 'pendingOrders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         $singleOrder = Order::findOrFail($id);
@@ -59,13 +41,7 @@ class OrderController extends Controller
         return view('admin.orders.edit' , compact('order'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Order $order)
     {
         $request->validate([
@@ -79,14 +55,9 @@ class OrderController extends Controller
         return to_route('admin.orders.index')->with('success','Order Updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        
     }
 }
