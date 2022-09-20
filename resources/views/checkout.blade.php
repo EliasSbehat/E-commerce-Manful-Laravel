@@ -1,41 +1,50 @@
 @extends('layouts.main')
 @section('title','Manful - Checkout')
 @section('content')
-<h3 class="text-5xl ml-4 mt-5 text-yellow-900 font-dancing">Checkout</h3>
+<h3 class="text-5xl ml-4 mt-5 font-dancing">Checkout</h3>
 <div class="min-h-full flex mt-10 mb-5">
 <form action="{{route('checkout-store')}}" class="w-full font-dancing" method="POST">
   @csrf
   {{-- Billing Details --}}
   <div class="w-2/3 h-fit ml-7 space-y-5">
-        <h4 class="w-2/3 text-xl py-2 bg-gray-100 rounded-lg pl-5 cursor-pointer" id="h">Billing Details</h4>
+        <h4 class="w-full text-2xl py-2 bg-gray-100 rounded-lg pl-5 cursor-pointer text-yellow-900" id="h">Billing Details</h4>
         <p class="text-sm">Please fill in all the details below</p>
+        <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
+            @if($errors->any())
+            @foreach ($errors->all() as $error)
+            <p class="bg-red-500 py-0.5 text-lg rounded-lg text-white mb-2 font-bold pl-4">
+              {{ $error }}
+            </p>
+            @endforeach
+            @endif
+        </div>
     <div class="flex space-x-5 pt-4">
       {{-- Firstname --}}
       <div>
         <label for="firstname" class="block text-sm pb-2">FirstName <sup>*</sup></label>
-        <input type="text" placeholder="John" required class="w-60 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="firstname" value="">
+        <input type="text" placeholder="John" required class="w-60 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="firstname" value="{{old('firstname')}}">
       </div>
       {{-- Lastname --}}
       <div>
         <label for="lastname" class="block text-sm pb-2">LastName <sup>*</sup></label>
-        <input type="text" placeholder="Doe" required  class="w-60 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="lastname" value="">
+        <input type="text" placeholder="Doe" required  class="w-60 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="lastname" value="{{old('lastname')}}">
       </div>
     </div>
     {{-- Phone number --}}
     <div>
       <label for="phone" class="block text-sm pb-2">Phone Number <sup>*</sup></label>
       <input type="tel"  disabled value="+254" class="w-20 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900">
-      <input type="tel" name="phone"  placeholder="712345678"  class="rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" minlength="9" maxlength="9" value="">
+      <input type="tel" name="phone"  placeholder="712345678"  class="rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" minlength="9" maxlength="9" value="{{old('phone')}}">
     </div>
     {{-- Town\City --}}
     <div>
         <label for="city" class="block text-sm pb-2">Town / City <sup>*</sup></label>
-        <input type="text" placeholder="Nairobi" required  class="w-72 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="city" value="">
+        <input type="text" placeholder="Nairobi" required  class="w-72 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" name="city" value="{{old('city')}}">
       </div>
     {{-- Delivery address --}}
     <div>
       <label for="address" class="block text-sm pb-2">Delivery Address <sup>*</sup></label>
-      <textarea name="address"  cols="30" rows="5" class="w-2/3 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" required placeholder="Street Name / Apartment / Building / Floor"></textarea>
+      <textarea name="address"  cols="30" rows="5" class="w-2/3 rounded-md border-emerald-800 focus:border-emerald-900 focus:ring-emerald-900" required placeholder="Street Name / Apartment / Building / Floor">{{old('address')}}</textarea>
     </div>   
     {{-- Payment method --}}
     <div class="py-2 space-y-2">

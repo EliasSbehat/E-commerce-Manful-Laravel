@@ -10,11 +10,11 @@
             <div class="flex justify-between mb-4">
                  <a href="{{route('admin.products.create')}}" class="p-2 my-2 bg-green-400 hover:bg-green-600 text-white rounded-lg font-bold">Add new product</a>
                  {{-- Status message --}}
-                 @if(session('message'))
-                <div  class="message w-64 h-10 flex items-center bg-green-200 rounded-md p-2 font-medium">
-                        <p>{{session('message')}}</p>                    
-                    </div>
+                <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
+                    @if(session('message'))
+                    <p class="bg-green-400 py-0.5 text-lg rounded-lg text-white mb-2 font-bold px-4">{{session('message')}}</p>
                     @endif
+              </div>
             </div>
             <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                 {{-- Pagination --}}

@@ -107,6 +107,13 @@
     <div class="my-2 px-3">
         {{$orders->links()}}
     </div>
+    <div class="my-2 ml-2">
+        <form action="{{route('admin.orders.search')}}" method="POST">
+            @csrf
+            <input type="search" class="w-1/3 h-10 focus:border-gray-400 focus:ring-gray-400" placeholder="Search Order Number" name="search">
+            <button type="submit" class="bg-black text-white px-3 py-1 -ml-1 h-10 shadow-md"><i class="fa fa-search"></i></button>
+        </form>
+        </div>
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-sm text-gray-700 uppercase bg-gray-50">
             <tr>
@@ -175,7 +182,7 @@
                     {{$order->status}}
                   </button>
                   @elseif($order->status == 'shipped')
-                  <button class="px-2 py-1 text-white font-bold bg-indigo-400 text-center cursor-default rounded-lg">
+                  <button class="px-2 py-1 text-white font-bold bg-indigo-500 text-center cursor-default rounded-lg">
                     {{$order->status}}
                   </button>
                   @elseif($order->status == 'completed')

@@ -23,9 +23,15 @@ class OrderController extends Controller
 
     
     
-    public function store(Request $request)
+    public function search(Request $request)
     {
-        //
+        $orders = Order::query();
+        if($request->input('search')){
+            $orders = $orders->where('order_no' ,'LIKE' ,$request->search);
+        }
+        // dd($orders);
+        $orders = $orders->paginate(5);
+        return view('admin.orders.search', compact('orders'));
     }
 
    

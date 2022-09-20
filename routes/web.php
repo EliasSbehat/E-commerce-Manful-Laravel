@@ -48,16 +48,18 @@ Route::controller(UserAccountController::class)->middleware('auth')->group(funct
 Route::middleware('auth')->group(function(){
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('checkout/store', [CheckoutController::class, 'store'])->name('checkout-store');
-    Route::view('/confirmation' , 'confirmation');
+    Route::view('/confirmation' , 'confirmation')->name('confirmation');
 });
 
 // Admin Routes
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/',[AdminController::class , 'index'])->name('index');
     Route::resource('/users' , UserController::class);
+    Route::post('/users/{id}' , [UserController::class , 'restore'])->name('users.restore');
     Route::resource('/categories',CategoryController::class);
     Route::resource('/products',ProductController::class);
     Route::resource('/orders', OrderController::class);
+    Route::post('/orders/search', [OrderController::class , 'search'])->name('orders.search');
 });
 
 require __DIR__.'/auth.php';

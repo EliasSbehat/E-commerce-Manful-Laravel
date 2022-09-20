@@ -75,7 +75,7 @@
           </tbody>
          </table>
          <div class="absolute bottom-0 right-0 mr-10 mb-4">
-          <p class="font-bold">Total: Ksh <span></span></p>
+          <p class="font-bold">Total: Ksh <span>{{$singleOrder->total}}</span></p>
          </div>
        </div>
     </div>

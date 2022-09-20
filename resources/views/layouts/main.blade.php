@@ -85,7 +85,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                 <button type="submit" class="text-center w-full bg-black text-white px-2 py-2 rounded shadow-sm text-md">Log out</button>
+                                 <button type="submit" class="text-center w-full bg-black text-white px-2 py-2 rounded shadow-sm text-md hover:bg-yellow-900 transition">Log out</button>
                             </x-dropdown-link>
                         </form>
                       @else

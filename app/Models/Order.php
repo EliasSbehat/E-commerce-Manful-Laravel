@@ -18,8 +18,10 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class ,'customer_id');
     }
+
     //One to many relationship to OrderDetail model
-    public function orderDetails(){
+    public function orderDetails()
+    {
         return $this->hasMany(OrderDetail::class);
     }
 }

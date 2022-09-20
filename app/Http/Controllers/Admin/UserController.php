@@ -14,18 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::withTrashed()->get();
         return view('admin.users.index' , compact('users'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
     }
 
     /**
@@ -86,8 +76,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return to_route('admin.users.index')->with('message', 'User deactivated successfully');
+    }
+
+    public function restore($id)
+    {
+        User::withTrashed()->find($id)->restore();
+        return to_route('admin.users.index')->with('message', 'User restored');
     }
 }
