@@ -4,16 +4,17 @@
 
 <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
     @if(session('message'))
-    <p class="bg-green-300 text-white ml-5 font-bold p-2 mb-3 rounded-lg">{{session('message')}}</p>
+    <p class="bg-green-500 text-white ml-5 font-bold p-2 mb-3 rounded-lg">{{session('message')}}</p>
     @endif
 </div>
 
-<section class="h-screen flex justify-center ml-4 my-4">
- <div class="h-full w-1/2 bg-black">
+<section class="h-fit flex flex-col md:flex-row justify-center ml-4 my-4 overflow-x-hidden">
+    
+ <div class="h-full w-full md:w-1/2 bg-black">
  <img src="{{Storage::url($product->image)}}" alt="" class="w-full h-full object-cover">
  </div>
 
- <div class="h-full w-1/3 ml-8 space-y-4 pt-12">
+ <div class="h-full w-3/4 md:w-1/3 mx-2 md:ml-8 space-y-4 pt-12">
  <h2 class="text-4xl font-dancing">{{$product->name}}</h2>
  <p class="text-2xl text-green-600">Ksh {{$product->price}}</p>
  <p class="text-lg font-dancing">{{$product->description}}</p>
@@ -23,7 +24,7 @@
         @csrf
         <input type="number" name="quantity" min="1" max="50" id="quantity" class="text-xl w-16 text-center rounded-md focus:">
         <input type="hidden" value="{{ $product->id }}" name="id">
-        <button type="submit" class="w-48 h-12 text-white bg-black rounded font-dancing border hover:bg-white hover:border-yellow-900 hover:text-black hover:font-semibold duration-100 ease-out" id="addToCart">Add To Cart</button>
+        <button type="submit" class="w-44 md:w-48 h-12 text-white bg-black rounded font-dancing border hover:bg-white hover:border-yellow-900 hover:text-black hover:font-semibold duration-100 ease-out" id="addToCart">Add To Cart</button>
     </form>
     </div>
     {{-- Category name --}}

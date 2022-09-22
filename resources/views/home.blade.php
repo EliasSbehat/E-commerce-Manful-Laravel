@@ -3,13 +3,15 @@
 @section('content')
 {{-- Hero Start --}}
 <section 
-class="hero bg-cover bg-center h-full"
-style="background-image: url('{{asset('img/cover.jpg')}}');">
+class="hero bg-cover bg-center h-full "
+style="background-image: url('{{asset('img/cover3.jpg')}}');"
+{{-- style="background-image: url('https://images.unsplash.com/photo-1587560903800-e89e54d24e77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM2fHxiYXJiZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60');" --}}
+>
  <div class="flex justify-center text-center h-full w-full">
   <header class="text-white space-y-8 mt-36 font-dancing tracking-tight">
-  <h1 class="md:text-5xl text-3xl ">Grooming, but like never before</h1>
+  <h1 class="md:text-5xl text-3xl leading-10">Grooming, but like never before</h1>
   <p class="md:text-2xl pb-8">Build your custom kit from scratch</p>
-  <a href="{{route('shop')}}" class="text-lg px-14 py-2 bg-white text-yellow-800 rounded font-semibold">To Shop</a>
+  <a href="{{route('shop')}}" class="text-lg px-16 py-2 bg-white text-yellow-800 rounded font-semibold">To Shop</a>
   </header>
  </div>
 </section>
@@ -18,7 +20,7 @@ style="background-image: url('{{asset('img/cover.jpg')}}');">
 <!-- Icons start -->
 <section>
 <div
-      class="flex justify-evenly h-36 items-center md:text-2xl text-lg text-center md:leading-10 md:font-bold font-medium md:py-8 py-0 text-yellow-900 font-dancing"
+      class="flex justify-evenly h-36 items-center md:text-2xl text-md text-center md:leading-10 md:font-bold font-medium md:py-8 py-0 text-yellow-900 font-dancing"
     >
       <div class="space-y-6">
         <i class="fa-brands fa-opencart"></i>
@@ -39,7 +41,7 @@ style="background-image: url('{{asset('img/cover.jpg')}}');">
 {{-- Text Start --}}
 <section class="flex flex-col text-center h-96 my-12 font-dancing border-black bg-gray-100">
   <h2 class="text-3xl font-bold text-amber-900 pt-20 pb-10">Why Manful</h2>
-  <div class=" leading-loose tracking-wider">  
+  <div class=" leading-loose tracking-wider text-sm px-2">  
     <p>We believe no size fits-all. Here at Manful we let you pick your grooming essentials.</p>
     <p>The minimum order amount is <b> 200KES</b> from our wide range of products.</p>
     <p>After selection you receive your order packaged as a kit!</p>
@@ -58,7 +60,7 @@ style="background-image: url('{{asset('img/cover.jpg')}}');">
     @foreach ($categories as $category)
     <div class="relative">
       <div class=" h-full w-full">
-        <div class="absolute bottom-32 left-1/2 -translate-x-1/2">
+        <div class="absolute bottom-24 left-1/2 -translate-x-1/2">
            <form action="{{route('filter', $category->id)}}" method="POST">
               @csrf
               <input type="hidden" name="id" value="{{$category->id}}">
@@ -78,12 +80,12 @@ style="background-image: url('{{asset('img/cover.jpg')}}');">
 {{-- Section title --}}
 <div class="flex justify-between">
     <div class="ml-4 text">
-<h2 class="text-xl md:text-3xl mb-2">Start building your kit</h2>
+<h2 class="text-lg md:text-3xl mb-2">Start building your kit</h2>
   <div class=" border-b-4 border-yellow-800  w-4/5 rounded-lg"></div>
 </div>
 
 <div class="mr-6 ">
-<a href="" class="hover:underline transition duration-100 text-yellow-900 font-semibold text-lg">View All <i class="fa-solid fa-angles-right"></i></a>
+<a href="" class="hover:underline transition duration-100 text-yellow-900 font-semibold md:text-lg">View All <i class="fa-solid fa-angles-right"></i></a>
 </div>
 </div>
 <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-y-12  justify-items-center pt-4 ">
@@ -113,30 +115,18 @@ style="background-image: url('{{asset('img/cover.jpg')}}');">
 </section>
 {{-- Products end --}}
 
-{{-- Deal start --}}
-<section class="flex h-full mt-28">
-<div class="w-full md:w-1/2">
-<img src="https://m.media-amazon.com/images/I/81WkoAtwsKL._SL1500_.jpg" alt="Beard Products" class="h-full w-full object-fit">
+{{-- About start --}}
+<section class="flex flex-col md:flex-row h-full mt-28 border-b border-white font-dancing text-white" id="about">
+<div class="w-full md:w-1/2 md:h-full h-1/2">
+<img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="" class="object-cover h-full w-full">
 </div>
-<div class="flex flex-col items-center justify-center space-y-8 w-1/2 font-dancing pt-8 relative">
-<h2 class="text-xl text-rose-700">Deal of the week</h2>
-<p class="text-5xl">Full Beard Gift Set</p>
-{{-- Timer --}}
-<p id="countdown" class="text-3xl ml-4 text-yellow-900"></p>
-{{-- Badge --}}
-<div class="absolute top-0 left-0 flex flex-col items-center justify-center mt-4 rounded-full w-36 h-36 bg-yellow-900  text-white">
-  <p >Sale of</p>
-  <p class="font-bold text-xl">3999 KES</p>
-</div>
-{{-- Cta --}}
-<div class="pt-4">
-  <a href="" class="px-20 py-4 bg-black uppercase text-white">Shop Now</a>
-</div>
+<div class="w-full md:w-1/2 h-1/2 md:h-full bg-black px-5 leading-10 flex justify-center items-center">
+<h5 class="text-3xl text-center leading-wider">From your privates to your not so privates, we're passionate about creating the best products for every part of you. And we have a lot of fun doing it.</h5>
 </div>
 </section>
-{{-- Deal end --}}
+{{-- About end --}}
 
-<section class="h-80 bg-black text-white text-center font-dancing pt-12 space-y-8">
+<section class="h-80 bg-black text-white text-center font-dancing pt-12 space-y-8 px-4">
 <p class="text-2xl">Dont forget to sign up</p>
 <p class="text-xl">Enjoy discounts, view your order history and do much more!</p>
 <div>

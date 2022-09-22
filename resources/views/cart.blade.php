@@ -12,7 +12,7 @@
 </section>
 @else
     
-<section class="flex justify-between h-fit mb-14">
+<section class="flex flex-col lg:flex-row justify-between h-fit mb-14">
  <div>
  <h2 class="ml-6 my-4 text-5xl font-dancing">My Cart</h2>
  {{-- <form action="{{route('cart.clear')}}" method="POST">
@@ -20,8 +20,8 @@
     <button type="submit">Clear all</button>
    
 </form> --}}
-<table class="w-[800px] font-dancing h-20 mx-4 border-separate border-spacing-4 border border-slate-500">
- <thead class=" text-justify text-xl">
+<table class="md:w-[800px] font-dancing h-20 mx-4 border-separate border-spacing-4 border border-slate-500">
+ <thead class=" text-justify md:text-xl">
   <tr>
    <th>Product</th>
    <th>Quantity</th>
@@ -33,11 +33,11 @@
   @foreach($cartItems as $item)
   <tr>
    <td class="flex">
-    <div class="ml-2 h-28 w-28 bg-black">
-     <img src="{{Storage::url($item->attributes->image)}}" alt="" class="h-full w-full object-fit">
+    <div class="ml-2 h-24 w-24 md:h-28 md:w-28 bg-black">
+     <img src="{{Storage::url($item->attributes->image)}}" alt="" class="h-full w-full object-cover">
     </div>
     <div class="pl-5 pt-3 space-y-2">
-     <p class="text-xl">{{$item->name}}</p>
+     <p class="text-sm md:text-xl">{{$item->name}}</p>
      <p class="font-semibold">{{$item->price}}KES</p>
     </div>
    </td>
@@ -62,7 +62,7 @@
  </tbody>
 </table>
 </div>
-<div class="w-96 h-[250px] bg-gray-100 mr-10 mt-8 font-dancing pl-4 pt-5 space-y-5">
+<div class="w-96 h-[250px] bg-gray-100 mr-10 mt-8 font-dancing ml-6 pl-4 pt-5 space-y-5">
 <h3 class="text-2xl">Cart Total</h3>
 <div class="flex justify-between">
     <p>Subtotal</p>

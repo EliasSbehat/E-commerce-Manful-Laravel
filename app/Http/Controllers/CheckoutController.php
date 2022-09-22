@@ -25,7 +25,7 @@ class CheckoutController extends Controller
             'address'=>'required|max:100',
         ]);
 
-        //  Save customer into database
+        // //  Save customer into database
         $customer = Customer::create([
             'user_id'=>auth()->user()->id,
             'firstname'=>$request->firstname,
@@ -35,20 +35,21 @@ class CheckoutController extends Controller
             'address'=>$request->address,
         ]);
 
-        //Save order into orders table 
+        // //Save order into orders table 
         $cartItems = \Cart::getContent();
         $length = 10;
         $order_no = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, $length);
         uniqid($order_no);
         $total = \Cart::getTotal();
+        $payment = request('payment-option');
 
         $order = Order::create([
             'customer_id'=>$customer->id,
             'order_no'=>$order_no,
-            'payment_type' => request('payment-option'),
+            'payment_type' => $payment,
             'total'=>$total,
         ]);
-        //Save each order item in order_details table
+        // //Save each order item in order_details table
         foreach ($cartItems as  $item) {
             OrderDetail::create([
                 'order_id'=>$order->id, 
@@ -58,10 +59,10 @@ class CheckoutController extends Controller
             ]);
         }
         
-         //Clear the Cart
+        //  //Clear the Cart
         \Cart::clear();
 
-        //Order confirmation email
+        // //Order confirmation email
         Mail::to(auth()->user())->send(new OrderReceived($order));
 
         return to_route('confirmation');

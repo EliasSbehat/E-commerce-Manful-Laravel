@@ -59,7 +59,7 @@ class UserAccountController extends Controller
     public function orders()
     {
         $user_id = auth()->user()->id;
-        $orders = DB::table('customers')->join('orders' , 'customers.id', '=' , 'orders.customer_id')->where('user_id', $user_id)->latest('orders.created_at')->get();
+        $orders = DB::table('customers')->join('orders' , 'customers.id', '=' , 'orders.customer_id')->where('user_id', $user_id)->latest('orders.created_at')->paginate(5);
         return view('orders' , compact('orders'));
     }
 

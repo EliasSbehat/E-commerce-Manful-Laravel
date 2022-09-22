@@ -2,7 +2,7 @@
 @section('title' , 'Manful | Account')
 @section('content')
 <section class="h-full flex justify-center font-dancing">
-  <div class=" w-1/2 mt-5 bg-gray-100 h-3/4 rounded-2xl">
+  <div class="w-full md:w-1/2 mx-5 md:mx-0  mt-5 bg-gray-100 h-3/4 rounded-2xl">
     <h4 class="text-xl text-yellow-900 text-center pt-5">Update Profile</h4>
     <form action="{{route('update-profile')}}" method="POST" class="flex flex-col items-center space-y-5">
       @csrf

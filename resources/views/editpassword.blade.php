@@ -2,7 +2,7 @@
 @section('title' , 'Manful | Update Password')
 @section('content')
 <section class="h-full flex justify-center font-dancing">
-  <div class=" w-1/2 mt-5 bg-gray-100 h-3/4 rounded-2xl">
+  <div class=" w-full md:w-1/2 mx-5 md:mx-0 bg-gray-100 h-3/4 rounded-2xl">
     <h4 class="text-2xl text-yellow-900 text-center pt-5">Update Password</h4>
     <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
       @if($errors->any())

@@ -7,7 +7,7 @@
     <h2 class="ml-6 my-4 text-5xl font-dancing">My Orders</h2>
         
     <div class="overflow-x-auto">
-      <table class="text-sm w-2/3 ml-10 text-justify mt-5">
+      <table class="text-sm w-full md:w-2/3 ml-10 text-justify mt-5">
         <thead class="h-20 border-y border-gray-600 text-yellow-900">
           <th class="px-2">Order No</th>
           <th>Shipped To</th>
@@ -37,6 +37,9 @@
         </tbody>
       </table>
     </div>
+    <div class="ml-12 my-4 w-1/2">
+        {{$orders->links()}}
+      </div>
     @else
       <div class="flex flex-col justify-center items-center text-center space-y-5">
        <div class="h-28 w-28 rounded-full mt-5 text-teal-600">

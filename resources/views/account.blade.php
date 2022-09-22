@@ -2,13 +2,13 @@
 @section('title' , 'Manful | Account')
 @section('content')
   <section class="flex justify-center h-full font-dancing my-5">
-    <div class="w-3/4 h-4/5 bg-gray-100 pl-20 pt-6 rounded-md">
+    <div class="md:w-3/4 h-4/5 bg-gray-100 pl-7 md:pl-20 pt-6 rounded-md mx-5">
       <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
       @if(session('success'))
       <p class="bg-green-400 text-white font-bold p-2 mb-3 rounded-lg">{{session('success')}}</p>
       @endif
      </div>
-      <div class="flex space-x-16 mb-5">
+      <div class="flex space-x-10 md:space-x-16 mb-5">
         <h5 class="text-xl text-yellow-900">Personal Information</h5>
         <a href="{{route('edit-profile', auth()->user()->id)}}" class="text-blue-500 font-bold">Edit</a>
         <a href="{{route('edit-password', auth()->user()->id)}}" class="text-blue-500 font-bold">Change Password</a>
@@ -30,7 +30,7 @@
       </div>
       <div>
         <label for="address" class="mx-5">Address</label>
-        <input type="text" readonly value="{{auth()->user()->customers->address}}" class="h-24 w-72 rounded-lg focus:border-gray-400 focus:ring-gray-400 cursor-not-allowed">
+        <input type="text" readonly value="{{auth()->user()->customers->address}}" class="h-24 md:w-72 rounded-lg focus:border-gray-400 focus:ring-gray-400 cursor-not-allowed">
       </div>
       @else
       <h5>No shipping Info</h5>

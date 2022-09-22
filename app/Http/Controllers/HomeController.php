@@ -36,8 +36,8 @@ class HomeController extends Controller
     }
 
     public function filter(Request $request, $id){
-     $catid = $request->id;
-     $products = Product::where('category_id', $catid)->paginate(6);
+     $category_id = $request->id;
+     $products = Product::where('category_id', $category_id)->paginate(6);
      $categories = Category::all();
      return view ('shop', compact('products', 'categories'));
 
