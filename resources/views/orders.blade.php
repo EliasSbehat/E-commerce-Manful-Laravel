@@ -2,9 +2,9 @@
 @section('title' , 'Manful | Orders')
 @section('content')
 
-<section class="h-full font-dancing bg-gray-50">
+<section class="h-full bg-gray-50">
   @if($orders->count()>0)
-    <h2 class="ml-6 my-4 text-5xl font-dancing">My Orders</h2>
+    <h2 class="ml-6 my-4 text-5xl">My Orders</h2>
         
     <div class="overflow-x-auto">
       <table class="text-sm w-full md:w-2/3 ml-10 text-justify mt-5">

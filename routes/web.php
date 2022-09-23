@@ -18,8 +18,11 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/product/{slug}','singleProduct')->name('product');
     // Search and Filter
     Route::get('/search', 'search')->name('search');
-    Route::post('/shop/{id}', 'filter')->name('filter');
     Route::get('/shop/{id}', 'filter')->name('filter');
+    Route::post('/shop/{id}', 'filter')->name('filter');
+    //Contact form
+    Route::get('/contact', 'contactForm')->name('contact')->middleware('auth');
+    Route::post('/contact/post', 'submitForm')->name('submit-form')->middleware('auth');
 });
 
 // Shopping cart
@@ -54,6 +57,7 @@ Route::middleware('auth')->group(function(){
 // Admin Routes
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/',[AdminController::class , 'index'])->name('index');
+    Route::post('/markasread', [AdminController::class, 'markAsRead'])->name('markasread');
     Route::resource('/users' , UserController::class);
     Route::post('/users/{id}' , [UserController::class , 'restore'])->name('users.restore');
     Route::resource('/categories',CategoryController::class);

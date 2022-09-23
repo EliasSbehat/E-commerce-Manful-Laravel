@@ -18,10 +18,10 @@
   {{-- Paypal SDK --}}
   <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&components=buttons"></script>
 </head>
-<body class="h-screen">
+<body class="h-screen font-dancing">
 
   <!-- Navbar start-->
-    <div class="nav bg-white font-dancing">
+    <div class="nav bg-white">
       <nav class="flex justify-between items-center h-20">
         <!-- Logo -->
         <div class="flex items-center ml-8 text-3xl font-bold">
@@ -29,14 +29,14 @@
          <ul
            class="pl-10 space-x-5 lg:space-x-12 text-lg font-semibold outline-none items-center hidden md:flex"
          >
-           <li class="">
+           <li>
              <a href="{{route('home')}}">Home</a>
            </li>
-           <li class="">
+           <li>
              <a href="{{route('shop')}}">Shop</a>
            </li>
-           <li class="">
-             <a href="#about">About</a>
+           <li>
+             <a href="{{route('contact')}}">Contact</a>
            </li>
          </ul>
         </div>
@@ -130,11 +130,18 @@
 
     <!-- Mobile navigation -->
     <div
-      class="md:invisible fixed right-0 bg-black text-white w-60 h-96 z-50 translate-x-64 transition-transform shadow-md  pt-4"
+      class="md:invisible fixed right-0 bg-gray-100 rounded-lg w-60 h-96 z-50 translate-x-64 transition-transform shadow-md  pt-4"
      id="mobileNav"
       >
     <nav>
-      <ul class="pt-5 pl-4 text-lg font-dancing">
+      <ul class="pt-4 pl-4 text-lg">
+          <li class="pb-5">
+            <form action="{{route('search')}}" method="GET" role="search" class="relative">
+               <i class="absolute top-2 left-40  fa fa-search"></i>
+              <input type="text" name="search" id="" class="h-8 w-48 rounded shadow-md border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200" placeholder="Search...">
+             
+            </form>
+          </li>
         <a href="{{route('account')}}" class="focus:font-bold "><li class="py-2 border-b border-white">
           <svg aria-hidden="true" class="inline mr-1 flex-shrink-0 w-6 h-6 text-amber-800 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
           My Profile
@@ -176,13 +183,13 @@
  @yield('content')
  
  {{-- Footer --}}
-    <section class="flex flex-col h-60 font-dancing border-t-2 border-white text-white bg-black w-full">
+    <section class="flex flex-col h-60 border-t-2 border-white text-white bg-black w-full">
      <div class="h-full w-full text-center">
        <div class="mt-5">
         <ul class="flex justify-center pt-6 space-x-4 md:space-x-6 lg:space-x-12">
           <a href="{{route('orders')}}"><li>Orders</li></a>
           <a href="{{route('account')}}"><li>Account</li></a>
-          <a href="{{route('shop')}}"><li>Shop</li></a>
+          <a href="{{route('contact')}}"><li>Contact</li></a>
         </ul>
        </div>
       <h2 class="text-5xl font-bold mt-5">ManFul</h2>

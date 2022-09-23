@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Contact;
 
 
 class HomeController extends Controller
@@ -47,5 +48,29 @@ class HomeController extends Controller
         $product  = Product::where('slug', $slug)->firstOrFail();
         
         return view('detail', compact('product'));
+    }
+
+    public function contactForm(){
+        return view('contact');
+    }
+
+    public function submitForm(Request $request){
+        //Validate incoming request
+        $request->validate([
+            'name'=>'required|string',
+            'email'=> 'required|email',
+            'subject'=>'required|string|max:50',
+            'message'=>'required|string|max:255',
+        ]);
+
+        Contact::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'subject'=>$request->subject,
+            'message'=>$request->message,
+        ]);
+
+        return redirect('contact')->with('message','Your message has been sent');
+        
     }
 }

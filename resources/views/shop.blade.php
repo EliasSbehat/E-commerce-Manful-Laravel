@@ -3,7 +3,7 @@
 @section('content')
 {{-- Filter partials --}}
 @include('partials.filter')
-<section class="font-dancing my-12">
+<section class=" my-12">
     <div class="mx-14">
         {{ $products->links() }}
     </div>

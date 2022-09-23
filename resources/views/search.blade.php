@@ -2,7 +2,7 @@
 @section('title','Your search')
 @section('content')
 @if($products->count()>0)
-<div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-4 justify-items-center gap-y-20 my-12">
+<div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-4 justify-items-center gap-y-20 my-12 min-h-full">
         @foreach($products as $product)
           <div class="w-80 h-96">
           {{-- Image --}}

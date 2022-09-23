@@ -8,7 +8,7 @@ style="background-image: url('{{asset('img/cover3.jpg')}}');"
 {{-- style="background-image: url('https://images.unsplash.com/photo-1587560903800-e89e54d24e77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM2fHxiYXJiZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60');" --}}
 >
  <div class="flex justify-center text-center h-full w-full">
-  <header class="text-white space-y-8 mt-36 font-dancing tracking-tight">
+  <header class="text-white space-y-8 mt-36  tracking-tight">
   <h1 class="md:text-5xl text-3xl leading-10">Grooming, but like never before</h1>
   <p class="md:text-2xl pb-8">Build your custom kit from scratch</p>
   <a href="{{route('shop')}}" class="text-lg px-16 py-2 bg-white text-yellow-800 rounded font-semibold">To Shop</a>
@@ -20,7 +20,7 @@ style="background-image: url('{{asset('img/cover3.jpg')}}');"
 <!-- Icons start -->
 <section>
 <div
-      class="flex justify-evenly h-36 items-center md:text-2xl text-md text-center md:leading-10 md:font-bold font-medium md:py-8 py-0 text-yellow-900 font-dancing"
+      class="flex justify-evenly h-36 items-center md:text-2xl text-md text-center md:leading-10 md:font-bold font-medium md:py-8 py-0 text-yellow-900 "
     >
       <div class="space-y-6">
         <i class="fa-brands fa-opencart"></i>
@@ -39,7 +39,7 @@ style="background-image: url('{{asset('img/cover3.jpg')}}');"
 <!-- Icons end   -->
 
 {{-- Text Start --}}
-<section class="flex flex-col text-center h-96 my-12 font-dancing border-black bg-gray-100">
+<section class="flex flex-col text-center h-96 my-12  border-black bg-gray-100">
   <h2 class="text-3xl font-bold text-amber-900 pt-20 pb-10">Why Manful</h2>
   <div class=" leading-loose tracking-wider text-sm px-2">  
     <p>We believe no size fits-all. Here at Manful we let you pick your grooming essentials.</p>
@@ -50,7 +50,7 @@ style="background-image: url('{{asset('img/cover3.jpg')}}');"
 {{-- Text End --}}
 
 {{-- Categories start --}}
-<section class="h-fit font-dancing">
+<section class="h-fit ">
   {{-- Section title --}}
   <h2 class="text-xl md:text-3xl mb-2 ml-4">Shop from our categories</h2>
   <div class=" border-b-4 border-yellow-800 mb-4 ml-4 w-1/5 rounded-lg"></div>
@@ -76,7 +76,7 @@ style="background-image: url('{{asset('img/cover3.jpg')}}');"
 {{-- Categories end --}}
 
 {{-- Products start --}}
-<section class="h-fit mt-28 font-dancing">
+<section class="h-fit mt-28 ">
 {{-- Section title --}}
 <div class="flex justify-between">
     <div class="ml-4 text">
@@ -116,7 +116,7 @@ style="background-image: url('{{asset('img/cover3.jpg')}}');"
 {{-- Products end --}}
 
 {{-- About start --}}
-<section class="flex flex-col md:flex-row h-full mt-28 border-b border-white font-dancing text-white" id="about">
+<section class="flex flex-col md:flex-row h-full mt-28 border-b border-white  text-white">
 <div class="w-full md:w-1/2 md:h-full h-1/2">
 <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="" class="object-cover h-full w-full">
 </div>
@@ -126,7 +126,7 @@ style="background-image: url('{{asset('img/cover3.jpg')}}');"
 </section>
 {{-- About end --}}
 
-<section class="h-80 bg-black text-white text-center font-dancing pt-12 space-y-8 px-4">
+<section class="h-80 bg-black text-white text-center  pt-12 space-y-8 px-4">
 <p class="text-2xl">Dont forget to sign up</p>
 <p class="text-xl">Enjoy discounts, view your order history and do much more!</p>
 <div>
