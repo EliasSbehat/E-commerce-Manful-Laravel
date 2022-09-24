@@ -16,6 +16,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        // If the user is not authenticated and is not admin
         if (!auth()->check() || !auth()->user()->is_admin) {
             abort(403);
         }

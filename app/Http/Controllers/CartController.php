@@ -3,29 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\URL;
 use App\Models\Product;
 class CartController extends Controller
 {
-    public function cartList(Request $request)
-    {
- 
+    public function cartList()
+    { 
+        // Get all items in the cart
         $cartItems = \Cart::getContent();
-        // dd($cartItems);
         return view('cart', compact('cartItems'));
     }
 
-    public function addToCart(){
-       $id = request()->id;
-       $product = Product::find($id);
+    public function addToCart(Request $request)
+    {
+        // Get id of product from incoming request
+       $id = $request->id;
+        //Find product with matching id
+       $product = Product::findOrFail($id);
+        // Convert price to integer    
        $price = intval($product->price);
+        //Add product to cart   
         \Cart::add([
             'id'=>$product->id,
             'name'=>$product->name,
             'price'=>$price,
-            'quantity'=>request()->quantity,
+            'quantity'=>$request->quantity,
             'attributes'=>array(
                 'image'=>$product->image,
             ),
@@ -34,8 +35,10 @@ class CartController extends Controller
             return back()->with('message','Product Added successfully');
     }
 
-    public function updateCart(Request $request){
-         $cart = \Cart::update(
+    public function updateCart(Request $request)
+    {
+        // Update quantity of cart
+         \Cart::update(
             $request->id,
             [
                 'quantity'=> [
@@ -45,22 +48,20 @@ class CartController extends Controller
             ]
         );
         
-        session()->flash('success' , 'Cart item is updated succesfully');
-        return redirect()->route('cart.list');
+        return redirect('cart')->with('success', 'Cart item is updated succesfully');
     }
 
-    public function removeCartItem(Request $request){
+    public function removeCartItem(Request $request)
+    {
+        // Remove single item from cart
         \Cart::remove($request->id);
-
-        return redirect()->back();
+        return redirect()->back()->with('success' , 'Item is removed from cart');
     }
 
     public function clearCart()
     {
+        // Clear cart
         \Cart::clear();
-
-        session()->flash('success', 'All Item Cart Clear Successfully !');
-
-        return redirect()->route('cart.list');
+        return redirect('cart');
     }
 }

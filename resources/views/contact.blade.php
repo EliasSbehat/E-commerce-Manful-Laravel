@@ -21,7 +21,7 @@
     @endif
   <form action="{{route('submit-form')}}" method="POST">
     @csrf
-    <div class="space-x-4 my-3">
+    <div class="space-y-2 md:space-y-0 md:space-x-4 my-3 flex flex-col md:flex-row">
       <input type="text" class="h-10 rounded-lg focus:border-gray-400 focus:ring-gray-400" placeholder="Your Name" name="name" required {{old('name')}}>
       <input type="email" class="h-10 rounded-lg focus:border-gray-400 focus:ring-gray-400" placeholder="Email" name="email" required value="{{old('email')}}">
     </div>

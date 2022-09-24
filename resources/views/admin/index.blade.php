@@ -57,7 +57,7 @@
      @if($messages->count()>0)
         @foreach ($messages as $message)
             
-        <div class="pl-4 my-3 w-2/3 h-40 border border-yellow-900 rounded-lg">
+        <div class="pl-4 my-3 w-full md:w-2/3 h-44 border border-yellow-900 rounded-lg">
             <div class="flex py-2 justify-between">
                 <div class="flex space-x-5">
                     <h5>{{$message->name}}</h5>
@@ -75,28 +75,29 @@
             </div>
             <p class="text-xl font-bold">{{$message->subject}}</p>
             <p class="text-sm">{{$message->message}}</p>
+            <p class="pt-4">{{date_format($message->created_at, "M d y, H:i a")}}</p>
         </div>
         @endforeach
         @else
         <h5>No User feedback</h5>
         @endif
     </div>
-    <div class="grid grid-cols-3 pt-4 h-60 text-white gap-x-3">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4 pt-4 h-fit md:h-60 text-white gap-x-3">
         <div class="pl-3 pt-5 bg-gradient-to-br from-orange-700 to-orange-400 rounded-lg drop-shadow-xl hover:drop-shadow-2xl transition hover:scale-105">
             <h5 class="text-xl font-bold pb-2">Total Orders</h5>
-            <p class="text-3xl pb-2">20</p>
-            <p class="text-sm font-extrabold">Completed<span class="pl-5">30%</span></p>
-            <p class="text-sm font-extrabold">Pending Payment<span class="pl-5">20%</span></p>
+            <p class="text-3xl pb-2">{{$totalOrdersCount}}</p>
+            <p class="text-sm font-extrabold">Completed<span class="pl-5">{{floor($percentageCompletedOrders)}}%</span></p>
+            <p class="text-sm font-extrabold pb-3 md:pb-0">Pending Payment<span class="pl-5">{{floor($percentagePendingPayment)}}%</span></p>
         </div>
         <div class="pl-3 pt-5 bg-gradient-to-br from-lime-700 to-lime-400 rounded-lg drop-shadow-xl hover:drop-shadow-2xl transition hover:scale-105">
             <h5 class="text-xl font-bold pb-2">Total Products</h5>
-            <p class="text-3xl pb-2">20</p>
-            <p class="text-sm font-extrabold">Product Categories<span class="pl-5">30</span></p>
+            <p class="text-3xl pb-2">{{$totalProducts}}</p>
+            <p class="text-sm font-extrabold pb-3 md:pb-0">Product Categories<span class="pl-5">{{$totalCategories}}</span></p>
         </div>
         <div class="pl-3 pt-5 bg-gradient-to-br from-fuchsia-700 to-fuchsia-400 rounded-lg drop-shadow-xl hover:drop-shadow-2xl transition hover:scale-105">
             <h5 class="text-xl font-bold pb-2">Total Users</h5>
-            <p class="text-3xl pb-2">20</p>
-            <p class="text-sm font-extrabold">Deactivated Users<span class="pl-5">20</span></p>
+            <p class="text-3xl pb-2">{{$totalUsers}}</p>
+            <p class="text-sm font-extrabold pb-3 md:pb-0">Deactivated Users<span class="pl-5">{{$deactivatedUsers}}</span></p>
         </div>
        
     </div>

@@ -15,18 +15,23 @@
 <section class="flex flex-col lg:flex-row justify-between h-fit mb-14">
  <div>
  <h2 class="ml-6 my-4 text-5xl">My Cart</h2>
- {{-- <form action="{{route('cart.clear')}}" method="POST">
-    @csrf
-    <button type="submit">Clear all</button>
-   
-</form> --}}
+ <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
+      @if(session('success'))
+      <p class="bg-green-400 text-white font-bold p-2 mx-4 w-1/2 mb-3 rounded-lg">{{session('success')}}</p>
+      @endif
+     </div>
 <table class="md:w-[800px] h-20 mx-4 border-separate border-spacing-4 border border-slate-500">
  <thead class=" text-justify md:text-xl">
   <tr>
    <th>Product</th>
    <th>Quantity</th>
    <th>Total</th>
-   <th></th>
+   <th>
+    <form action="{{route('cart.clear')}}" method="POST" onsubmit="return confirm('Clear everything in cart?')">
+        @csrf
+        <button type="submit"><i class="text-xl text-red-600 fa-solid fa-trash"></i></button>
+    </form>
+    </th>
   </tr>
  </thead>
  <tbody>

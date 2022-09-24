@@ -10,36 +10,25 @@ Use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
+        // Fetch all categories
         $categories = Category::all();
         return view('admin.categories.index', compact('categories'));   
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(CategoryStoreRequest $request)
     {
+        // Type hinting the request class that contains the validation rules
+        // Store the file in the public/categories directory
         $image = $request->file('image')->store('public/categories');
+        // Store the category into the database
         Category::create([
             'name'=> $request->name,
             'image'=>$image
@@ -48,46 +37,25 @@ class CategoryController extends Controller
         return to_route('admin.categories.index')->with('message','Created Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Category $category)
     {
         return view('admin.categories.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Category $category)
     {
+         // Validate the incoming request
         $request->validate([
             'name'=>'required',
         ]);
+        // Get the image
         $image = $category->image;
+         // Check if the incoming request has a file image then delete if from storage and replace it with  new image  
         if($request->hasFile('image')){
             Storage::delete($category->image);
             $image = $request->file('image')->store('public/categories');
         }
-       
+        // Update the corresponding records in the database
         $category->update([
             'name'=>$request->name,
             'image'=>$image
@@ -96,17 +64,11 @@ class CategoryController extends Controller
         return to_route('admin.categories.index')->with('message','Updated Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Category $category)
     {
+        // Delete image from storage and category from the database
         Storage::delete($category->image);
         $category->delete();
-
         return to_route('admin.categories.index')->with('message', 'Deleted Successfully');
     }
 }

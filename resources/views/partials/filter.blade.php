@@ -9,17 +9,15 @@
     {{$category->name}}
     @endif
     @endforeach
-    
   </h2>
 </section>
 
+{{-- Nav --}}
 <section class="flex justify-center space-x-2 md:space-x-7 mt-5 font-dancing">
- {{-- Nav --}}
  <div  class="{{request()->routeIs('shop')? 'active' : ''}}"> 
    <a href="{{route('shop')}}" class="px-2 md:px-10 border border-black">All</a>
   </div>
 @foreach ($categories as $category)
-
 <div class="{{request()->is('shop/'. $category->id) ? 'active' : ''}}">
   <form action="{{route('filter', $category->id)}}" method="POST">
     @csrf
