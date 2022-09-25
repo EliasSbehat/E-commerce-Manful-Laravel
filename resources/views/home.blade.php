@@ -79,7 +79,7 @@
     </div>
 
     <div class="mr-6 ">
-    <a href="" class="hover:underline transition duration-100 text-yellow-900 font-semibold md:text-lg">View All <i class="fa-solid fa-angles-right"></i></a>
+    <a href="{{route('shop')}}" class="hover:underline transition duration-100 text-yellow-900 font-semibold md:text-lg">View All <i class="fa-solid fa-angles-right"></i></a>
     </div>
     </div>
     <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-y-12  justify-items-center pt-4 ">
