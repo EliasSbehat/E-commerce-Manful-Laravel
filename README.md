@@ -45,6 +45,7 @@
 
 - composer install && composer update
 - php artisan key:generate
+- php artisan storage:link
 - php artisan migrate --seed
 - npm install && npm run dev
 - php artisan serve
