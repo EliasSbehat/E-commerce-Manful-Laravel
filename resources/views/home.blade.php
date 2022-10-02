@@ -2,7 +2,7 @@
 @section('title' , 'ManFul - Home')
 @section('content')
 {{-- Hero Start --}}
-  <section class="hero bg-cover bg-center h-full" style="background-image: url('{{asset('img/cover3.jpg')}}');">
+  <section class="hero bg-cover bg-center h-full" style="background-image: url('{{asset('img/cover.jpg')}}');">
     <div class="flex justify-center text-center h-full w-full">
       <header class="text-white space-y-8 mt-36  tracking-tight">
       <h1 class="md:text-5xl text-3xl leading-10">Grooming, but like never before</h1>
